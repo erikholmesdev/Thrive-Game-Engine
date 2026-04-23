@@ -8,18 +8,18 @@
 #include "Application.h"
 #include "Window.h"
 #include "EventDispatcher.h"
+#include "Renderer.h"
 
 
 namespace Thrive
 {
 	// *** TODO ** 
-	
 	// After we will work on adding stuff to the layer stack. 
 	//First Layer -->Render-->ImGuiLayer-->Entiy-->
 	
 
 	
-
+	 
 	//Method		: Application::Application
 	//Parameters	: 
 	//Returns		: 
@@ -60,16 +60,14 @@ namespace Thrive
 				layer->OnUpdate(deltaTime); 
 			}
 
-			//Render 
-			m_Window.Clear(); 
+			Renderer::BeginFrame(); 
 
 			for (auto& layer : m_LayerStack)
 			{
 				layer->OnRender(); 
 			}
 
-			m_Window.Display();
-			
+			Renderer::EndFrame(); 
 
 		}
 	}	
