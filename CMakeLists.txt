@@ -21,7 +21,20 @@ set(THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
 # SFML
 	add_subdirectory(${THIRD_PARTY_DIR}/SFML)
 #Imgui
-	add_subdirectory(${THIRD_PARTY_DIR}/imgui)
+	set(IMGUI_DIR ${THIRD_PARTY_DIR}/imgui)
+
+add_library(ImGui STATIC
+    ${IMGUI_DIR}/imgui.cpp
+    ${IMGUI_DIR}/imgui_draw.cpp
+    ${IMGUI_DIR}/imgui_tables.cpp
+    ${IMGUI_DIR}/imgui_widgets.cpp
+    ${IMGUI_DIR}/imgui_demo.cpp
+    ${IMGUI_DIR}/misc/cpp/imgui_stdlib.cpp
+)
+
+target_include_directories(ImGui PUBLIC
+    ${IMGUI_DIR}
+)
 
 add_subdirectory(Engine)
 

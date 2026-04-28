@@ -1,19 +1,19 @@
 @echo off
-
 cd ..
 
-if not exist ThirdParty (
-     mkdir ThirdParty
-    git submodule update --init --recursive
+REM --- ALWAYS ensure submodules are correct ---
+git submodule sync --recursive
+git submodule update --init --recursive
+
+REM --- Clean build directory (IMPORTANT) ---
+if exist build (
+    rmdir /s /q build
 )
 
+mkdir build
+cd build
 
-if not exist build mkdir build
+REM --- Configure fresh ---
+cmake .. -G "Visual Studio 17 2022" -A x64
 
-cd build 
-
-cmake .. -G "Visual Studio 17 2022"
-
-cls
-
-echo "Run solution file from the build directory"
+echo Run the solution file from the build directory

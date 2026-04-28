@@ -36,7 +36,7 @@ namespace Thrive
 
 				// Proper encapsulated API
 				if (handled)
-					m_Event.SetHandled(true);
+					m_Event.Handled = true;
 
 				return true;
 			}

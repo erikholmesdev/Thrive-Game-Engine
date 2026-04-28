@@ -16,9 +16,6 @@ namespace Thrive
 	// *** TODO ** 
 	// After we will work on adding stuff to the layer stack. 
 	//First Layer -->Render-->ImGuiLayer-->Entiy-->
-	
-
-	
 	 
 	//Method		: Application::Application
 	//Parameters	: 
@@ -27,7 +24,6 @@ namespace Thrive
 	Application::Application()
 	{
 		m_Window.InitWindow(); 
-		
 	}
 
 	//Currently not being used
@@ -60,14 +56,14 @@ namespace Thrive
 				layer->OnUpdate(deltaTime); 
 			}
 
-			Renderer::BeginFrame(); 
+			/*Renderer::BeginFrame(); */
 
 			for (auto& layer : m_LayerStack)
 			{
 				layer->OnRender(); 
 			}
 
-			Renderer::EndFrame(); 
+			/*Renderer::EndFrame(); */
 
 		}
 	}	
