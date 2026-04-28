@@ -8,12 +8,12 @@
 #include "Window.h"
 #include "LayerStack.h"
 #include "Event.h"
+#include "Camera.h" 
 
 
 
 namespace Thrive
 {
-
 	//Class		 : Application
 	//Description: This is our application class
 	class Application
@@ -24,8 +24,7 @@ namespace Thrive
 		virtual ~Application(); 
 		void Run(); 
 		void Update(); 
-		void Renderer(); 
-		void PushLayer(std::unique_ptr<Layer> layer); 
+		void PushLayer(std::unique_ptr <Layer> layer); 
 		void DispatchEvent(Event& e);
 	
 	//Class Variables 
@@ -34,5 +33,6 @@ namespace Thrive
 		sf::Clock m_Clock;
 		Window m_Window;
 		LayerStack m_LayerStack; 
+		Camera m_Camera; 
 	};
 }

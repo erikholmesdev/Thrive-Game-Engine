@@ -5,7 +5,7 @@
 
 #pragma once
 #include <pch.h>
-
+#include "Event.h"
 
 namespace Thrive
 {
@@ -18,7 +18,7 @@ namespace Thrive
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
 		virtual void OnUpdate(float dt) {};
-		virtual void OnEvent() {}
+		virtual void OnEvent(Event& e) {}
 		virtual void OnRender(){}
 
 		const std::string& GetName() const {

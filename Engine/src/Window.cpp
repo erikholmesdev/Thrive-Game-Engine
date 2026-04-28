@@ -86,16 +86,10 @@ namespace Thrive
 		//Resize Event 
 		if (auto resized = e.getIf<sf::Event::Resized>())
 		{
-			unsigned int width = resized->size.x;
-			unsigned int height = resized->size.y;
-
-			// Handle view here (correct layer)
-			sf::View view = GetWindow().getView();
-			view.setSize({ static_cast<float>(width), static_cast<float>(height) });
-			view.setCenter({ width / 2.0f, height / 2.0f });
-			GetWindow().setView(view);
-
-			return std::make_unique<WindowResizeEvent>(width, height);
+			return std::make_unique<WindowResizeEvent>(
+				resized->size.x,
+				resized->size.y
+			);
 		}
 
 		//Keypressed Event

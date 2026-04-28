@@ -1,8 +1,15 @@
+//File		 : Renderer.h
+//Programmer : 
+//Date		 : 04/28/2026
+//Description: This file contains all the Renderer object. 
+
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace Thrive {
-
+namespace Thrive 
+{
+	//Class		 : Renderer 
+	//Description: This class will contain our renderer. 
 	class Renderer {
 		
 	public: 
@@ -13,7 +20,13 @@ namespace Thrive {
 
 		static void Draw(const sf::Drawable& drawable);
 
+		static void SetView(const sf::View& view); 
+
+		static void OnWindowResize(uint32_t width, uint32_t height); 
+
 	private:
+		
+		//Set to nullptr at the top of the Renderer.cpp 
 		static sf::RenderWindow* s_Window; 
 	};
 }

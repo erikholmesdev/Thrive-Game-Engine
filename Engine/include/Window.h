@@ -31,10 +31,7 @@ namespace Thrive
 		//(Engine - Facing) 
 		void PollEvents(const std::function<void(Event&)>& callback); 
 
-		//Rendering 
-		void Clear() { GetWindow().clear(); }
-		void Display() { GetWindow().display(); }
-
+		
 
 	public: 
 
@@ -51,6 +48,14 @@ namespace Thrive
 		 //Return     : sf::RenderWindow& 
 		 //Description: This method GetWindow() will return sf::RenderWindow& 
 		 inline sf::RenderWindow& GetWindow() { return m_RenderWindow;  }
+
+		 //Rendering 
+		 void Clear() { GetWindow().clear(); }
+		 void Display() { GetWindow().display(); }
+
+		 //Close Window 
+		 void CloseWindow() { GetWindow().close(); }
+
 
 
 	private: 

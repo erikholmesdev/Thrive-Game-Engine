@@ -7,6 +7,7 @@
 #include <pch.h>
 #include "Application.h"
 #include "Window.h"
+#include "WindowEvents.h"
 #include "EventDispatcher.h"
 #include "Renderer.h"
 
@@ -21,11 +22,14 @@ namespace Thrive
 	//Parameters	: 
 	//Returns		: 
 	//Description   : This will setup our application by setting up all the window attributes
-	Application::Application()
+	Application::Application():
+		m_Camera(1280.0f,720.0f)
 	{
 		m_Window.InitWindow(); 
+		Renderer::Init(&m_Window.GetWindow()); 
+;
 	}
-
+	
 	//Currently not being used
 	Application::~Application()
 	{
@@ -56,14 +60,22 @@ namespace Thrive
 				layer->OnUpdate(deltaTime); 
 			}
 
-			/*Renderer::BeginFrame(); */
+			Renderer::BeginFrame(); 
+
+			//WORLD PASS 
+			Renderer::SetView(m_Camera.GetView());
 
 			for (auto& layer : m_LayerStack)
 			{
 				layer->OnRender(); 
 			}
 
-			/*Renderer::EndFrame(); */
+			//UI PASS (no Camera) 
+			Renderer::SetView(m_Window.GetWindow().getDefaultView());
+
+			// (Future UI/ ImGUI Here) 
+
+			Renderer::EndFrame(); 
 
 		}
 	}	
@@ -77,14 +89,6 @@ namespace Thrive
 		m_LayerStack.PushLayer(std::move(layer));
 	}
 
-	//Method		: Application::Renderer()
-	//Parameters	: 
-	//Returns		: void
-	//Description   :
-	void Application::Renderer()
-	{
-		
-	} 
 
 	//Method		: Application::Update()
 	//Parameters	:
@@ -106,6 +110,27 @@ namespace Thrive
 	void Application::DispatchEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
+
+		dispatcher.Dispatch<WindowCloseEvent>([this](WindowCloseEvent&)
+			{
+				m_Window.CloseWindow();
+				return true;
+			});
+
+		dispatcher.Dispatch<WindowResizeEvent>([this](WindowResizeEvent& ev)
+			{
+				Renderer::OnWindowResize(ev.GetWidth(), ev.GetHeight());
+				return true;
+			});
+
+		// Send to layers
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+		{
+			(*it)->OnEvent(e);
+
+			if (e.Handled)
+				break;
+		}
 	}
 
 	
