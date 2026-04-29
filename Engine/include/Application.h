@@ -26,6 +26,8 @@ namespace Thrive
 		void Update(); 
 		void PushLayer(std::unique_ptr <Layer> layer); 
 		void DispatchEvent(Event& e);
+
+		
 	
 	//Class Variables 
 	private:
@@ -35,4 +37,6 @@ namespace Thrive
 		LayerStack m_LayerStack; 
 		Camera m_Camera; 
 	};
+
+	Application* CreateApplication();
 }
