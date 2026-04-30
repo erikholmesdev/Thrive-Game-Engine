@@ -9,10 +9,10 @@
 
 int main()
 {
-	Thrive::Application App; 
+	Thrive::Application* app = Thrive::CreateApplication(); 
 
-	App.Run(); 
-	
+	app->Run(); 
+	delete app;
 
 	return 0; 
 

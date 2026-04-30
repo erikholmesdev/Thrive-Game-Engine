@@ -35,8 +35,9 @@ namespace Thrive
 		sf::Clock m_Clock;
 		Window m_Window;
 		LayerStack m_LayerStack; 
-		Camera m_Camera; 
+	
 	};
 
+	// This is found in the GameApplication.cpp. 
 	Application* CreateApplication();
 }

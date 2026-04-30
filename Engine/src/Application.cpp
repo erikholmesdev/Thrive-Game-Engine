@@ -15,19 +15,16 @@
 namespace Thrive
 {
 	// *** TODO ** 
-	// After we will work on adding stuff to the layer stack. 
-	//First Layer -->Render-->ImGuiLayer-->Entiy-->
-	 
+	
 	//Method		: Application::Application
-	//Parameters	: 
-	//Returns		: 
+	//Parameters	: ()
 	//Description   : This will setup our application by setting up all the window attributes
-	Application::Application():
-		m_Camera(1280.0f,720.0f)
+	Application::Application()
 	{
 		m_Window.InitWindow(); 
 		Renderer::Init(&m_Window.GetWindow()); 
-;
+
+		//PushLayer(std::make_unique<GameLayer>(&m_Camera));
 	}
 	
 	//Currently not being used
@@ -37,7 +34,7 @@ namespace Thrive
 	}
 
 	//Method		: Application::Run()
-	//Parameters	: 
+	//Parameters	: ()
 	//Returns		: void
 	//Description   : This method will run our Application 
 	void Application::Run()
@@ -62,8 +59,7 @@ namespace Thrive
 
 			Renderer::BeginFrame(); 
 
-			//WORLD PASS 
-			Renderer::SetView(m_Camera.GetView());
+			
 
 			for (auto& layer : m_LayerStack)
 			{
@@ -99,9 +95,6 @@ namespace Thrive
 
 	}
 
-	
-
-	
 	//Method		: Application::DispatchEvent(Event& e)
 	//Parameters	: (Event& e)
 	//Returns		: void 

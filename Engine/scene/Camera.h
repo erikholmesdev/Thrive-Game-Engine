@@ -28,7 +28,7 @@ namespace Thrive
 		//Parameters	: (float x, float y)
 		//Returns		: void
 		//Description   : This method will set the position of the camera to the middle of the screen 
-		void SetPostion (float x, float y)
+		void SetPosition (float x, float y)
 		{
 			m_View.setCenter(sf::Vector2f(x, y));
 		}

@@ -4,6 +4,7 @@ project(Game)
 # Collect all Game .cpp files
 file(GLOB_RECURSE GAME_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
 )
 
 # Create the executable
@@ -13,6 +14,7 @@ add_executable(Game ${GAME_SRC})
 target_include_directories(Game
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Link the Engine library
