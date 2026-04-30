@@ -10,6 +10,7 @@
 #include "KeyboardEvents.h"
 #include "MouseEvents.h"
 #include "Log.h"
+#include "Common.h"
 
 namespace Thrive
 {
@@ -17,7 +18,7 @@ namespace Thrive
 	//Description	: This constructor will call the Windows SetWindowAttribute() method. 
 	Window::Window()
 	{
-		SetWindowAttributes(); 
+		SetWindowAttributes(Common::APPLICATION_WIDTH , Common::APPLICATION_HEIGHT);
 
 		#ifdef THRIVE_DEBUG
 			Log::Init();
@@ -72,7 +73,7 @@ namespace Thrive
 
 	//Method		: std::unique_ptr<Event> Window::TranslateEvent(const sf::Event& e)
 	//Parameters	: (const sf::Event& e)
-	//Returns		: nullptr
+	//Returns		: nullptr or The type of event that was just called. 
 	//Description   : This method will take an sf::Event and based off what the event is that is the event going to my event system. 
 	std::unique_ptr<Event> Window::TranslateEvent (const sf::Event& e)
 	{

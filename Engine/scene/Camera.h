@@ -33,6 +33,25 @@ namespace Thrive
 			m_View.setCenter(sf::Vector2f(x, y));
 		}
 
+		void Move(float x, float y)
+		{
+			m_View.move(sf::Vector2f(x, y));
+		}
+
+		void SetSize(float width, float height)
+		{
+			m_View.setSize(sf::Vector2f(width, height));
+
+			// keep camera centered properly
+			sf::Vector2f center = m_View.getCenter();
+			m_View.setCenter(center);
+		}
+
+		sf::Vector2f GetPosition() const
+		{
+			return m_View.getCenter();
+		}
+
 	    //Method		: GetView()
 		//Parameters	: ()
 		//Returns		: const sf::View& 

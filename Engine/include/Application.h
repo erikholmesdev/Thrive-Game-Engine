@@ -6,9 +6,15 @@
 #pragma once
 #include <pch.h>
 #include "Window.h"
+
 #include "LayerStack.h"
+
 #include "Event.h"
-#include "Camera.h" 
+#include "WindowEvents.h"
+#include "EventDispatcher.h"
+
+#include "Renderer.h"
+#include "Camera.h"
 
 
 
@@ -35,9 +41,11 @@ namespace Thrive
 		sf::Clock m_Clock;
 		Window m_Window;
 		LayerStack m_LayerStack; 
-	
 	};
 
-	// This is found in the GameApplication.cpp. 
+	//Function	  : Thrive::Application* Thrive::CreateApplication
+	//Parameters  : ()
+	//Returns	  : new GameApplication();
+	//Description : This function job is to create our application. It returns a new GameApplication. 
 	Application* CreateApplication();
 }

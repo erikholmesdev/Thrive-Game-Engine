@@ -39,3 +39,6 @@ target_include_directories(ImGui PUBLIC
 add_subdirectory(Engine)
 
 add_subdirectory(Game)
+
+# Game must always be the startup project !!!
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Game)

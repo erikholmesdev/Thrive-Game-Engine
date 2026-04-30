@@ -10,6 +10,7 @@ namespace Thrive
 {
 	//Static 
 	sf::RenderWindow* Renderer::s_Window = nullptr; 
+	sf::View Renderer::s_DefaultView;
 
 	//Method		: Renderer::Init
 	//Parameters	: (sf::RendererWindow* window)
@@ -18,6 +19,8 @@ namespace Thrive
 	void Renderer::Init (sf::RenderWindow* window)
 	{
 		s_Window = window; 
+
+		s_DefaultView = window->getDefaultView();
 	}
 
 	//Method		: Renderer::BeginFrame
@@ -46,6 +49,12 @@ namespace Thrive
 	void Renderer::SetView (const sf::View& view)
 	{
 		s_Window->setView(view);
+	}
+
+
+	const sf::View& Renderer::GetDefaultView()
+	{
+		return s_DefaultView;
 	}
 
 	//Method		: Renderer::OnWindowResize

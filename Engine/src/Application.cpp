@@ -6,10 +6,7 @@
 
 #include <pch.h>
 #include "Application.h"
-#include "Window.h"
-#include "WindowEvents.h"
-#include "EventDispatcher.h"
-#include "Renderer.h"
+
 
 
 namespace Thrive
@@ -23,8 +20,6 @@ namespace Thrive
 	{
 		m_Window.InitWindow(); 
 		Renderer::Init(&m_Window.GetWindow()); 
-
-		//PushLayer(std::make_unique<GameLayer>(&m_Camera));
 	}
 	
 	//Currently not being used

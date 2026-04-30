@@ -18,6 +18,8 @@ namespace Thrive
 		std::string name = " ";
 	};
 
+	
+
 	//Class		 : Window
 	//Description: This is our window class and its job is to get all the windows attributes all setup
 	class Window
@@ -26,7 +28,7 @@ namespace Thrive
 		//Found in the src/Window.cpp 
 		Window();
 		void InitWindow();
-		void SetWindowAttributes(const unsigned int width = 800, const unsigned int height = 600, const std::string& name = "Thrive Engine");
+		void SetWindowAttributes(const unsigned int width = 1200, const unsigned int height = 700, const std::string& name = "Thrive Engine");
 
 		//(Engine - Facing) 
 		void PollEvents(const std::function<void(Event&)>& callback); 
@@ -38,16 +40,16 @@ namespace Thrive
 		//Inline 
 		 //Method	: GetFrameRate()
 		 //Returns  : m_FrameRate = 60
-		 inline unsigned int GetFrameRate() const { return m_FrameRate; }
+		unsigned int GetFrameRate() const { return m_FrameRate; }
 
 		 //Method   : GetCurrentWindowAttribute()
 		 //Returns  : m_WindowAttribute 
-		 inline WindowAttribute GetCurrentWindowAttributes() { return m_WindowAttributes; }
+		 WindowAttribute GetCurrentWindowAttributes() { return m_WindowAttributes; }
 
 		 //Method     : sf::RenderWindow& GetWindow()
 		 //Return     : sf::RenderWindow& 
 		 //Description: This method GetWindow() will return sf::RenderWindow& 
-		 inline sf::RenderWindow& GetWindow() { return m_RenderWindow;  }
+		 sf::RenderWindow& GetWindow() { return m_RenderWindow;  }
 
 		 //Rendering 
 		 void Clear() { GetWindow().clear(); }

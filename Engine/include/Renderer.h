@@ -24,9 +24,13 @@ namespace Thrive
 
 		static void OnWindowResize(uint32_t width, uint32_t height); 
 
+		static const sf::View& GetDefaultView();
+
+	
 	private:
 		
 		//Set to nullptr at the top of the Renderer.cpp 
 		static sf::RenderWindow* s_Window; 
+		static sf::View s_DefaultView; 
 	};
 }
