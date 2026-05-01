@@ -7,11 +7,17 @@
 #include <pch.h>
 #include "Application.h"
 
+#include "Log.h"
+
+#include "Input.h"
+
+#include <imgui.h>
+#include <imgui-SFML.h>
 
 
 namespace Thrive
 {
-	// *** TODO ** 
+
 	
 	//Method		: Application::Application
 	//Parameters	: ()
@@ -20,6 +26,14 @@ namespace Thrive
 	{
 		m_Window.InitWindow(); 
 		Renderer::Init(&m_Window.GetWindow()); 
+
+		Input::Init(); 
+		
+		#ifdef THRIVE_DEBUG
+				Log::Init();
+		#endif
+
+		m_ImGuiLayer = std::make_unique<ImGuiLayer>();
 	}
 	
 	//Currently not being used
@@ -54,6 +68,8 @@ namespace Thrive
 
 			Renderer::BeginFrame(); 
 
+		
+			Renderer::SetView(m_Window.GetWindow().getDefaultView());
 			
 
 			for (auto& layer : m_LayerStack)
@@ -61,13 +77,18 @@ namespace Thrive
 				layer->OnRender(); 
 			}
 
-			//UI PASS (no Camera) 
-			Renderer::SetView(m_Window.GetWindow().getDefaultView());
-
 			// (Future UI/ ImGUI Here) 
+			// UI + IMGUI
+			m_ImGuiLayer->Begin();
 
-			Renderer::EndFrame(); 
+			for (auto& layer : m_LayerStack)
+				layer->OnImGuiRender();
 
+			m_ImGuiLayer->End();
+			
+
+			Renderer::EndFrame();
+			Input::EndFrame(); 
 		}
 	}	
 	

@@ -9,8 +9,9 @@
 #include "WindowEvents.h"
 #include "KeyboardEvents.h"
 #include "MouseEvents.h"
-#include "Log.h"
 #include "Common.h"
+#include "Input.h"
+
 
 namespace Thrive
 {
@@ -19,10 +20,6 @@ namespace Thrive
 	Window::Window()
 	{
 		SetWindowAttributes(Common::APPLICATION_WIDTH , Common::APPLICATION_HEIGHT);
-
-		#ifdef THRIVE_DEBUG
-			Log::Init();
-		#endif
 	}
 
 	//Method		: Window::InitWindow()
@@ -75,66 +72,79 @@ namespace Thrive
 	//Parameters	: (const sf::Event& e)
 	//Returns		: nullptr or The type of event that was just called. 
 	//Description   : This method will take an sf::Event and based off what the event is that is the event going to my event system. 
-	std::unique_ptr<Event> Window::TranslateEvent (const sf::Event& e)
-	{
-		//Window Close event
-		if (e.is<sf::Event::Closed>())
-		{
-			GetWindow().close(); 
-			return std::make_unique<WindowCloseEvent>(); 
-		}
+    std::unique_ptr<Event> Window::TranslateEvent(const sf::Event& e)
+    {
+        // ============================
+        // INPUT SYSTEM HOOK (MISSING PIECE)
+        // ============================
+        if (auto key = e.getIf<sf::Event::KeyPressed>())
+        {
+            Thrive::Input::SetKeyDown(
+                Thrive::Input::MapSFMLKey(key->code)
+            );
+        }
 
-		//Resize Event 
-		if (auto resized = e.getIf<sf::Event::Resized>())
-		{
-			return std::make_unique<WindowResizeEvent>(
-				resized->size.x,
-				resized->size.y
-			);
-		}
+        if (auto key = e.getIf<sf::Event::KeyReleased>())
+        {
+            Thrive::Input::SetKeyUp(
+                Thrive::Input::MapSFMLKey(key->code)
+            );
+        }
 
-		//Keypressed Event
-		if (auto key = e.getIf<sf::Event::KeyPressed>())
-		{
-			return std::make_unique<KeyPressed>(key->code); 
-		}
+        // ============================
+        // ENGINE EVENTS
+        // ============================
 
-		//KeyReleased Event
-		if (auto key = e.getIf<sf::Event::KeyReleased>())
-		{
-			return std::make_unique<KeyReleased>(key->code);
-		}
+        if (e.is<sf::Event::Closed>())
+        {
+            GetWindow().close();
+            return std::make_unique<WindowCloseEvent>();
+        }
 
-		// Mouse Move
-		if (auto mouse = e.getIf<sf::Event::MouseMoved>())
-		{
-			return std::make_unique<MouseMoveEvent>(
-				(float) mouse->position.x,
-				(float) mouse->position.y
-			);
-		}
+        if (auto resized = e.getIf<sf::Event::Resized>())
+        {
+            return std::make_unique<WindowResizeEvent>(
+                resized->size.x,
+                resized->size.y
+            );
+        }
 
-		// Mouse Button Pressed
-		if (auto mouse = e.getIf<sf::Event::MouseButtonPressed>())
-		{
-			return std::make_unique<MouseButtonPressedEvent>(
-				mouse->button,
-				(float)mouse->position.x,
-				(float)mouse->position.y
-			);
-		}
+        if (auto key = e.getIf<sf::Event::KeyPressed>())
+        {
+            return std::make_unique<KeyPressed>(key->code);
+        }
 
-		// Mouse Button Released
-		if (auto mouse = e.getIf<sf::Event::MouseButtonReleased>())
-		{
-			return std::make_unique<MouseButtonReleasedEvent>(
-				mouse->button,
-				(float)mouse->position.x,
-				(float)mouse->position.y
-			);
-		}
-		
-		//Unkown Event 
-		return nullptr; 
-	}
+        if (auto key = e.getIf<sf::Event::KeyReleased>())
+        {
+            return std::make_unique<KeyReleased>(key->code);
+        }
+
+        if (auto mouse = e.getIf<sf::Event::MouseMoved>())
+        {
+            return std::make_unique<MouseMoveEvent>(
+                (float)mouse->position.x,
+                (float)mouse->position.y
+            );
+        }
+
+        if (auto mouse = e.getIf<sf::Event::MouseButtonPressed>())
+        {
+            return std::make_unique<MouseButtonPressedEvent>(
+                mouse->button,
+                (float)mouse->position.x,
+                (float)mouse->position.y
+            );
+        }
+
+        if (auto mouse = e.getIf<sf::Event::MouseButtonReleased>())
+        {
+            return std::make_unique<MouseButtonReleasedEvent>(
+                mouse->button,
+                (float)mouse->position.x,
+                (float)mouse->position.y
+            );
+        }
+
+        return nullptr;
+    }
 }
