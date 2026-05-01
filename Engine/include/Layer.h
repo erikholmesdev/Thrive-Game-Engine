@@ -21,6 +21,10 @@ namespace Thrive
 		virtual void OnEvent(Event& e) {}
 		virtual void OnRender(){}
 
+		
+		virtual void OnImGuiRender() {
+		}
+
 		const std::string& GetName() const {
 			return m_DebugName;
 		};

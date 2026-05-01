@@ -24,7 +24,8 @@ target_link_libraries(Engine
         sfml-graphics
         sfml-window
         sfml-system
-        
+        ImGui
+        ImGui-SFML
 )
 
 target_precompile_headers(Engine

@@ -16,12 +16,12 @@
 #include "Renderer.h"
 #include "Camera.h"
 
-
+//#include "ImGuiLayer.h"
 
 namespace Thrive
 {
 	//Class		 : Application
-	//Description: This is our application class
+	//Description: This is our application class. 
 	class Application
 	{
 	public:
@@ -32,8 +32,6 @@ namespace Thrive
 		void Update(); 
 		void PushLayer(std::unique_ptr <Layer> layer); 
 		void DispatchEvent(Event& e);
-
-		
 	
 	//Class Variables 
 	private:
@@ -41,6 +39,8 @@ namespace Thrive
 		sf::Clock m_Clock;
 		Window m_Window;
 		LayerStack m_LayerStack; 
+
+		//std::unique_ptr<ImGuiLayer> m_ImGuiLayer; 
 	};
 
 	//Function	  : Thrive::Application* Thrive::CreateApplication

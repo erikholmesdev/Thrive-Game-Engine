@@ -26,7 +26,6 @@ namespace Thrive
 
 		static const sf::View& GetDefaultView();
 
-	
 	private:
 		
 		//Set to nullptr at the top of the Renderer.cpp 

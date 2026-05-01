@@ -21,8 +21,8 @@ namespace Thrive
 		~LayerStack() = default; 
 
 		//Add Layer
-		void PushLayer(LayerPtr layer); 
-		void PushOverlay(LayerPtr overlay);
+		void PushLayer (LayerPtr layer); 
+		void PushOverlay (LayerPtr overlay);
 
 		//Remove Layer
 		void PopLayer(); 

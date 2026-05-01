@@ -10,9 +10,9 @@
 #include "Log.h"
 
 #include "Input.h"
-
-#include <imgui.h>
-#include <imgui-SFML.h>
+//
+//#include <imgui.h>
+//#include <imgui-SFML.h>
 
 
 namespace Thrive
@@ -33,7 +33,7 @@ namespace Thrive
 				Log::Init();
 		#endif
 
-		m_ImGuiLayer = std::make_unique<ImGuiLayer>();
+		//m_ImGuiLayer = std::make_unique<ImGuiLayer>();
 	}
 	
 	//Currently not being used
@@ -79,12 +79,14 @@ namespace Thrive
 
 			// (Future UI/ ImGUI Here) 
 			// UI + IMGUI
-			m_ImGuiLayer->Begin();
+			
+
+			//m_ImGuiLayer->Begin();
 
 			for (auto& layer : m_LayerStack)
 				layer->OnImGuiRender();
 
-			m_ImGuiLayer->End();
+			// m_ImGuiLayer->End();
 			
 
 			Renderer::EndFrame();

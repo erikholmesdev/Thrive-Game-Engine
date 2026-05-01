@@ -61,13 +61,13 @@ namespace Thrive
     {
         switch (key)
         {
-        case sf::Keyboard::Key::W: return Key::W;
-        case sf::Keyboard::Key::A: return Key::A;
-        case sf::Keyboard::Key::S: return Key::S;
-        case sf::Keyboard::Key::D: return Key::D;
-        case sf::Keyboard::Key::Space: return Key::Space;
-        case sf::Keyboard::Key::Escape: return Key::Escape;
-        default: return Key::W;
+            case sf::Keyboard::Key::W: return Key::W;
+            case sf::Keyboard::Key::A: return Key::A;
+            case sf::Keyboard::Key::S: return Key::S;
+            case sf::Keyboard::Key::D: return Key::D;
+            case sf::Keyboard::Key::Space: return Key::Space;
+            case sf::Keyboard::Key::Escape: return Key::Escape;
+            default: return Key::W;
         }
     }
 }

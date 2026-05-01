@@ -34,11 +34,15 @@ add_library(ImGui STATIC
 
 target_include_directories(ImGui PUBLIC
     ${IMGUI_DIR}
+    IMGUI_USER_CONFIG="ThriveImGuiConfig.h"
 )
 
 add_subdirectory(Engine)
 
 add_subdirectory(Game)
+
+set(IMGUI_SFML_FIND_SFML OFF)
+add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
 
 # Game must always be the startup project !!!
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Game)
