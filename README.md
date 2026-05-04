@@ -6,8 +6,10 @@ This engine is developed from scratch and is intended to help learning C ++ and 
 
 ---
 
-## Project Updates 
-### (Apr 10, 2026)
+## Project Updates
+## (May 1, 2026)
+
+Currently working on the pipeline between the engine and the game. The top task right now to get done is figure out how to implement the SFML-ImGUI and how should ImGUI communicate with the backend. 
 
 --- 
 
@@ -15,8 +17,17 @@ This engine is developed from scratch and is intended to help learning C ++ and 
 
 ### Windows
 
+*** Requires Visual Studio 2019 or higher. ***
+
+1) Go to the "Scripts" folder. 
+2) From this folder run the "build.bat" 
+3) Now from the build folder run Thrive.sln
+
 ### Linux 
 
+Unfortunately currently not support. 
+
+Maybe one day.....
 
 ---
 
@@ -25,7 +36,7 @@ This engine is developed from scratch and is intended to help learning C ++ and 
 ## Techology Stack
 - Language: C ++ 23
 - Graphics API: SFML 
-- Window/Input: SFML and 
+- Window/Input: SFML
 - UI: Dear ImGui 
 - Logging: Spdlog
 - Build System: CMake 
