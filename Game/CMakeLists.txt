@@ -15,6 +15,8 @@ file(GLOB_RECURSE GAME_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/Entities/*.cpp
 )
 
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${GAME_SRC})
+
 # Create the executable
 add_executable(Game ${GAME_SRC})
 

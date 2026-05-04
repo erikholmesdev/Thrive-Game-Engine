@@ -3,18 +3,25 @@
 file(GLOB_RECURSE ENGINE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Core/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Core/*.h
+    
     ${CMAKE_CURRENT_SOURCE_DIR}/Graphics/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Graphics/*.h
+
     ${CMAKE_CURRENT_SOURCE_DIR}/Events/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Events/*.h
+
     ${CMAKE_CURRENT_SOURCE_DIR}/Inputs/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Inputs/*.h
+
     ${CMAKE_CURRENT_SOURCE_DIR}/Scenes/*.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Scenes/*.cpp
+
     ${CMAKE_CURRENT_SOURCE_DIR}/Common/*.h
 
 
 )
+
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${ENGINE_SOURCES})
 
 add_library(Engine STATIC ${ENGINE_SOURCES})
 
