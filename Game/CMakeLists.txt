@@ -34,11 +34,17 @@ target_include_directories(Game
 target_link_libraries(Game
     PRIVATE
         Engine
+       
 )
 
 # Reuse Engine's precompiled header
 target_precompile_headers(Game
     REUSE_FROM Engine
+)
+
+target_compile_definitions(Game
+    PUBLIC
+        IMGUI_USER_CONFIG="imconfig-SFML.h"
 )
 
 target_compile_definitions(Game PRIVATE

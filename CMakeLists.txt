@@ -20,6 +20,11 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # -------------------------
+# Used to fix some build setup errors with ImGui-SFML
+# -------------------------
+set(IMGUI_SFML_FIND_SFML OFF CACHE BOOL "" FORCE)
+
+# -------------------------
 # Third party root
 # -------------------------
 set(THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
@@ -38,8 +43,9 @@ add_subdirectory (${CMAKE_SOURCE_DIR}/Scripts/ImGui)
 # =========================================================
 # ImGui-SFML configuration
 # =========================================================
-# add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
-
+set(SFML_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(SFML_BUILD_DOC OFF CACHE BOOL "" FORCE)
+add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
 
 # =========================================================
 # Engine + Game
@@ -53,6 +59,3 @@ add_subdirectory(Game)
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     PROPERTY VS_STARTUP_PROJECT Game
 )
-
-# Game must always be the startup project !!!
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Game)

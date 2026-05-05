@@ -51,9 +51,8 @@ target_link_libraries(Engine
         sfml-graphics
         sfml-window
         sfml-system
-    PRIVATE
         ImGui
-    #    ImGui-SFML
+        ImGui-SFML::ImGui-SFML
 )
 
 # Precompiled header containing the c++ standard lib

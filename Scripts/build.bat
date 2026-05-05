@@ -11,6 +11,17 @@ if exist build (
 )
 
 mkdir build
+
+REM This is for setting up the right version for the project
+cd ThirdParty/imgui
+git checkout v1.91.1-docking
+
+cd ../SFML
+git checkout 3.0.x
+
+REM Back to main project dir: Thrive 
+cd ..\.. 
+
 cd build
 
 REM --- Configure fresh ---
