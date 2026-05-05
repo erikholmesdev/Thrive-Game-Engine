@@ -1,48 +1,61 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(Thrive LANGUAGES CXX) 	
+project(Thrive LANGUAGES CXX)
 
-if(MSVC)  # Only for Visual Studio
-	add_compile_options("/utf-8")
+# -------------------------
+# MSVC settings
+# -------------------------
+if(MSVC)
+    add_compile_options("/utf-8")
 endif()
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# .exe 
+# -------------------------
+# Output directories
+# -------------------------
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-# Shared Libs (.dll) 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-# Static libs
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+# -------------------------
+# Used to fix some build setup errors with ImGui-SFML
+# -------------------------
+set(IMGUI_SFML_FIND_SFML OFF CACHE BOOL "" FORCE)
+
+# -------------------------
+# Third party root
+# -------------------------
 set(THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
 
-#External Libs
+# =========================================================
 # SFML
-	add_subdirectory(${THIRD_PARTY_DIR}/SFML)
-#Imgui
-	set(IMGUI_DIR ${THIRD_PARTY_DIR}/imgui)
+# =========================================================
+add_subdirectory(${THIRD_PARTY_DIR}/SFML)
 
-add_library(ImGui STATIC
-    ${IMGUI_DIR}/imgui.cpp
-    ${IMGUI_DIR}/imgui_draw.cpp
-    ${IMGUI_DIR}/imgui_tables.cpp
-    ${IMGUI_DIR}/imgui_widgets.cpp
-    ${IMGUI_DIR}/imgui_demo.cpp
-    ${IMGUI_DIR}/misc/cpp/imgui_stdlib.cpp
-)
+# =========================================================
+# ImGui (core)
+# =========================================================
+set(IMGUI_DIR ${THIRD_PARTY_DIR}/imgui) # This will be used 
+add_subdirectory (${CMAKE_SOURCE_DIR}/Scripts/ImGui)
 
-target_include_directories(ImGui PUBLIC
-    ${IMGUI_DIR}
-    IMGUI_USER_CONFIG="ThriveImGuiConfig.h"
-)
-
-add_subdirectory(Engine)
-
-add_subdirectory(Game)
-
-set(IMGUI_SFML_FIND_SFML OFF)
+# =========================================================
+# ImGui-SFML configuration
+# =========================================================
+set(SFML_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(SFML_BUILD_DOC OFF CACHE BOOL "" FORCE)
 add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
 
-# Game must always be the startup project !!!
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Game)
+# =========================================================
+# Engine + Game
+# =========================================================
+add_subdirectory(Engine)
+add_subdirectory(Game)
+
+# =========================================================
+# Startup project (Visual Studio)
+# =========================================================
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    PROPERTY VS_STARTUP_PROJECT Game
+)

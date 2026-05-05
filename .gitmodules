@@ -1,7 +1,7 @@
 [submodule "ThirdParty/SFML"]
     path = ThirdParty/SFML
     url = https://github.com/SFML/SFML.git
-    branch = 2.6.x
+    branch = 3.0S.x
 
 [submodule "ThirdParty/imgui"]
     path = ThirdParty/imgui
@@ -11,7 +11,7 @@
 [submodule "ThirdParty/imgui-sfml"]
     path = ThirdParty/imgui-sfml
     url = https://github.com/SFML/imgui-sfml.git
-    branch = v2.5
+    branch = master
 
 [submodule "ThirdParty/spdlog"]
     path = ThirdParty/spdlog
