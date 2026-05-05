@@ -10,6 +10,7 @@ if exist build (
     rmdir /s /q build
 )
 
+Rem Make build dir. This is where the solution will live. 
 mkdir build
 
 REM This is for setting up the right version for the project
