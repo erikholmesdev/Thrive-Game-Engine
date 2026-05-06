@@ -20,8 +20,9 @@ Currently working on the pipeline between the engine and the game. The top task 
 *** Requires Visual Studio 2019 or higher. ***
 
 1) Go to the "Scripts" folder. 
-2) From this folder run the "build.bat" 
-3) Now from the build folder run Thrive.sln
+2) From this folder run the "build.bat".
+3) Now from the build folder run Thrive.sln.
+4) From Visual Studio build the Thirve project.
 
 ### Linux 
 
@@ -31,17 +32,30 @@ Maybe one day.....
 
 ---
 
+
+## Documentation
+
+### Requirements 
+All project requirements can be found [here](Docs/Documentation/Requirements/Requirements.md).
+
+### Design Documents
+
+### 
+
+---
+
 ## Project Goals
 
-## Techology Stack
+
+
+### Techology Stack
 - Language: C ++ 23
-- Graphics API: SFML 
-- Window/Input: SFML
-- UI: Dear ImGui 
+- Graphics API: SFML version  3.0x
+- Window/Input: SFML version 3.0x
+- UI: Dear ImGui version 1.91-docking 
 - Logging: Spdlog
 - Build System: CMake 
 
-## Features 
 
 --- 
 
