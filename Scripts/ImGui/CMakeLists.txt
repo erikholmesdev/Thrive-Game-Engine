@@ -15,6 +15,3 @@ target_include_directories(ImGui PUBLIC
     ${CMAKE_SOURCE_DIR}/Engine/Config
 )
 
-target_compile_definitions(ImGui PUBLIC
-    IMGUI_USER_CONFIG="ThriveImGuiConfig.h"
-)

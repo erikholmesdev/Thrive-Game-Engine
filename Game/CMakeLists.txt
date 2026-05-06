@@ -42,10 +42,7 @@ target_precompile_headers(Game
     REUSE_FROM Engine
 )
 
-target_compile_definitions(Game
-    PUBLIC
-        IMGUI_USER_CONFIG="imconfig-SFML.h"
-)
+
 
 target_compile_definitions(Game PRIVATE
     $<$<CONFIG:Debug>:THRIVE_DEBUG>

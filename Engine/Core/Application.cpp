@@ -10,9 +10,7 @@
 #include "Log.h"
 
 #include "Input.h"
-//
-//#include <imgui.h>
-//#include <imgui-SFML.h>
+
 
 
 namespace Thrive
@@ -32,8 +30,11 @@ namespace Thrive
 		#ifdef THRIVE_DEBUG
 				Log::Init();
 		#endif
+	
+		m_LayerStack.PushOverlay(
+			std::make_unique<ImGuiLayer>(m_Window.GetWindow())
+		);
 
-		//m_ImGuiLayer = std::make_unique<ImGuiLayer>();
 	}
 	
 	//Currently not being used
@@ -67,28 +68,21 @@ namespace Thrive
 			}
 
 			Renderer::BeginFrame(); 
-
-		
 			Renderer::SetView(m_Window.GetWindow().getDefaultView());
-			
-
 			for (auto& layer : m_LayerStack)
 			{
 				layer->OnRender(); 
 			}
 
-			// (Future UI/ ImGUI Here) 
-			// UI + IMGUI
+			ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
+
+			ImGuiLayer::DrawSpace();
 			
-
-			//m_ImGuiLayer->Begin();
-
 			for (auto& layer : m_LayerStack)
 				layer->OnImGuiRender();
 
-			// m_ImGuiLayer->End();
-			
-
+			//
+			ImGuiLayer::End(m_Window.GetWindow());
 			Renderer::EndFrame();
 			Input::EndFrame(); 
 		}

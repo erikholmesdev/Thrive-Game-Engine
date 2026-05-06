@@ -16,7 +16,7 @@
 #include "Renderer.h"
 #include "Camera.h"
 
-//#include "ImGuiLayer.h"
+#include "ImGuiLayer.h"
 
 namespace Thrive
 {
@@ -40,7 +40,7 @@ namespace Thrive
 		Window m_Window;
 		LayerStack m_LayerStack; 
 
-		//std::unique_ptr<ImGuiLayer> m_ImGuiLayer; 
+		std::unique_ptr <ImGuiLayer> m_ImGuiLayer; 
 	};
 
 	//Function	  : Thrive::Application* Thrive::CreateApplication

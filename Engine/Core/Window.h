@@ -40,16 +40,16 @@ namespace Thrive
 		//Inline 
 		 //Method	: GetFrameRate()
 		 //Returns  : m_FrameRate = 60
-		unsigned int GetFrameRate() const { return m_FrameRate; }
+		unsigned int GetFrameRate () const { return m_FrameRate; }
 
 		 //Method   : GetCurrentWindowAttribute()
 		 //Returns  : m_WindowAttribute 
-		 WindowAttribute GetCurrentWindowAttributes() { return m_WindowAttributes; }
+		 WindowAttribute GetCurrentWindowAttributes () { return m_WindowAttributes; }
 
 		 //Method     : sf::RenderWindow& GetWindow()
 		 //Return     : sf::RenderWindow& 
 		 //Description: This method GetWindow() will return sf::RenderWindow& 
-		 sf::RenderWindow& GetWindow() { return m_RenderWindow;  }
+		 sf::RenderWindow & GetWindow() { return m_RenderWindow;  }
 
 		 //Rendering 
 		 void Clear() { GetWindow().clear(); }
