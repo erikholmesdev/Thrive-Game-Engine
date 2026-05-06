@@ -6,17 +6,11 @@
 
 #include <pch.h>
 #include "Application.h"
-
 #include "Log.h"
-
 #include "Input.h"
-
-
 
 namespace Thrive
 {
-
-	
 	//Method		: Application::Application
 	//Parameters	: ()
 	//Description   : This will setup our application by setting up all the window attributes
@@ -61,11 +55,13 @@ namespace Thrive
 					this->DispatchEvent(e); 
 				});
 			
-			//update Layers 
+			//Update Layers 
 			for (auto& layer : m_LayerStack)
 			{
 				layer->OnUpdate(deltaTime); 
 			}
+
+			//Renderer
 
 			Renderer::BeginFrame(); 
 			Renderer::SetView(m_Window.GetWindow().getDefaultView());
@@ -74,14 +70,16 @@ namespace Thrive
 				layer->OnRender(); 
 			}
 
+			//ImGuiLayer 
+
 			ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
 
-			ImGuiLayer::DrawSpace();
+			// ImGuiLayer::DrawSpace(); //Currently not needed. 
 			
 			for (auto& layer : m_LayerStack)
 				layer->OnImGuiRender();
 
-			//
+			// This is where everything updates. 
 			ImGuiLayer::End(m_Window.GetWindow());
 			Renderer::EndFrame();
 			Input::EndFrame(); 

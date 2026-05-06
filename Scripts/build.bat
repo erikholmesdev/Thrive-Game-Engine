@@ -1,6 +1,10 @@
 @echo off
 cd ..
 
+REM -- Might need python too!!! 
+
+REM -- Make sure who ever is using this repo has git.
+
 REM --- ALWAYS ensure submodules are correct ---
 git submodule sync --recursive
 git submodule update --init --recursive
