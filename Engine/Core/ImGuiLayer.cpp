@@ -76,7 +76,7 @@ namespace Thrive
 	{
 		// Example UI
 		ImGui::Begin("Debug");
-		ImGui::Text("Thrive Engine");
+		ImGui:
 		ImGui::End();
 	}
 

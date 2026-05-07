@@ -3,7 +3,6 @@
 //Date		 : Mar 20, 2026
 //Description: This file contains the main loop for our Thrive game engine application.
 
-
 #include <pch.h>
 #include "Application.h"
 #include "Log.h"
@@ -14,7 +13,7 @@ namespace Thrive
 	//Method		: Application::Application
 	//Parameters	: ()
 	//Description   : This will setup our application by setting up all the window attributes
-	Application::Application()
+	Application::Application ()
 	{
 		m_Window.InitWindow(); 
 		Renderer::Init(&m_Window.GetWindow()); 
@@ -22,17 +21,18 @@ namespace Thrive
 		Input::Init(); 
 		
 		#ifdef THRIVE_DEBUG
-				Log::Init();
-		#endif
-	
-		m_LayerStack.PushOverlay(
-			std::make_unique<ImGuiLayer>(m_Window.GetWindow())
-		);
 
+				Log::Init();
+
+				m_LayerStack.PushOverlay(
+					std::make_unique<ImGuiLayer>(m_Window.GetWindow())
+				);
+
+		#endif
 	}
 	
 	//Currently not being used
-	Application::~Application()
+	Application::~Application ()
 	{
 
 	}
@@ -41,7 +41,7 @@ namespace Thrive
 	//Parameters	: ()
 	//Returns		: void
 	//Description   : This method will run our Application 
-	void Application::Run()
+	void Application::Run ()
 	{
 		//Game loop
 		while (m_Window.GetWindow().isOpen())
@@ -51,9 +51,9 @@ namespace Thrive
 			//Events 
 			//Lamda so we can use the Application::DispatchEvent(Event& e) method. 
 			m_Window.PollEvents([this](Event& e)
-				{
-					this->DispatchEvent(e); 
-				});
+		    {
+				this->DispatchEvent(e); 
+			});
 			
 			//Update Layers 
 			for (auto& layer : m_LayerStack)
@@ -62,7 +62,6 @@ namespace Thrive
 			}
 
 			//Renderer
-
 			Renderer::BeginFrame(); 
 			Renderer::SetView(m_Window.GetWindow().getDefaultView());
 			for (auto& layer : m_LayerStack)
@@ -71,16 +70,19 @@ namespace Thrive
 			}
 
 			//ImGuiLayer 
+			#ifdef THRIVE_DEBUG
 
-			ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
+				ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
 
-			// ImGuiLayer::DrawSpace(); //Currently not needed. 
+				// ImGuiLayer::DrawSpace(); //Currently not needed. 
 			
-			for (auto& layer : m_LayerStack)
-				layer->OnImGuiRender();
+				for (auto& layer : m_LayerStack)
+					layer->OnImGuiRender();
 
-			// This is where everything updates. 
-			ImGuiLayer::End(m_Window.GetWindow());
+				// This is where everything updates. 
+				ImGuiLayer::End(m_Window.GetWindow());
+			#endif 
+
 			Renderer::EndFrame();
 			Input::EndFrame(); 
 		}
@@ -89,8 +91,8 @@ namespace Thrive
 	//Method		: Application::PushLayer
 	//Parameters	: (std::unique_ptr<Layer> layer)
 	//Returns		: void
-	//Description   : This method will push a new layer to our layer stack
-	void Application::PushLayer(std::unique_ptr<Layer> layer)
+	//Description   : This method will push a new layer from our game to our layer stack
+	void Application::PushLayer(std::unique_ptr <Layer> layer)
 	{
 		m_LayerStack.PushLayer(std::move(layer));
 	}
@@ -100,7 +102,7 @@ namespace Thrive
 	//Parameters	:
 	//Returns		: void
 	//Description   :
-	void Application::Update()
+	void Application::Update ()
 	{
 
 	}
@@ -110,22 +112,23 @@ namespace Thrive
 	//Returns		: void 
 	//Description   : This methods job is to take in a current event that needs to be ran and create an 
 	//					event dispatcher for that current event. 
-	void Application::DispatchEvent(Event& e)
+	void Application::DispatchEvent (Event& e)
 	{
 		EventDispatcher dispatcher(e);
 
-		dispatcher.Dispatch<WindowCloseEvent>([this](WindowCloseEvent&)
+		dispatcher.Dispatch <WindowCloseEvent> ([this](WindowCloseEvent&)
 			{
 				m_Window.CloseWindow();
 				return true;
 			});
+		
 
-		dispatcher.Dispatch<WindowResizeEvent>([this](WindowResizeEvent& ev)
+		dispatcher.Dispatch <WindowResizeEvent> ([this](WindowResizeEvent& ev)
 			{
 				Renderer::OnWindowResize(ev.GetWidth(), ev.GetHeight());
 				return true;
 			});
-
+		
 		// Send to layers
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
@@ -135,6 +138,4 @@ namespace Thrive
 				break;
 		}
 	}
-
-	
 }

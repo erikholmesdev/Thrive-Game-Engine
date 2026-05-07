@@ -1,6 +1,6 @@
 //File		 : Input.cpp 
 //Programmer : 
-//Date		 :
+//Date		 : May 06, 2026
 //Description: This file contains all the Input class method definitions. 
 
 #include <pch.h>
@@ -70,19 +70,19 @@ namespace Thrive
         return s_KeyDown[(size_t)key];
     }
 
-	//Method		: 
-	//Parameters	: 
-	//Returns		: 
-	//Description   : 
+	//Method		: bool Input::IsKeyPressed (Key key)
+	//Parameters	: (Key key)
+	//Returns		: bool (true or false)
+	//Description   : This method is called when a key pressed
     bool Input::IsKeyPressed(Key key)
     {
         return s_KeyPressed[(size_t)key];
     }
 
-	//Method		: 
-	//Parameters	: 
-	//Returns		: 
-	//Description   : 
+	//Method		: bool Input::IsKeyReleased (Key key)
+	//Parameters	: (Key key)
+	//Returns		: bool (true or false)
+	//Description   : This method is called when the key is released 
     bool Input::IsKeyReleased(Key key)
     {
         return s_KeyReleased[(size_t)key];
