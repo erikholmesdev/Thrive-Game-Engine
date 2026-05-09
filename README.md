@@ -7,10 +7,9 @@ This engine is developed from scratch and is intended to help learning C ++ and 
 ---
 
 ## Project Updates
-## (May 1, 2026)
+## (May 9, 2026)
 
-Currently working on the pipeline between the engine and the game. The top task right now to get done is figure out how to implement the SFML-ImGUI and how should ImGUI communicate with the backend. 
-
+Currently planning out how I am going to create entities, and figure out a way to connect these entities to inputs.s
 --- 
 
 ## Project Setup 
