@@ -19,15 +19,18 @@ namespace Thrive
 		Renderer::Init(&m_Window.GetWindow()); 
 
 		Input::Init(); 
-		
-		#ifdef THRIVE_DEBUG
 
+		// ===============
+		// + Debug Mode  +
+		// ===============
+		// - Turns on logging
+		// - Init the DearImGui layer. 
+		#ifdef THRIVE_DEBUG
 				Log::Init();
 
 				m_LayerStack.PushOverlay(
-					std::make_unique<ImGuiLayer>(m_Window.GetWindow())
+					std::make_unique <ImGuiLayer> (m_Window.GetWindow())
 				);
-
 		#endif
 	}
 	
@@ -73,7 +76,6 @@ namespace Thrive
 			#ifdef THRIVE_DEBUG
 
 				ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
-
 				// ImGuiLayer::DrawSpace(); //Currently not needed. 
 			
 				for (auto& layer : m_LayerStack)

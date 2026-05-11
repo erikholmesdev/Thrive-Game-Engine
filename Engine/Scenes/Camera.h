@@ -33,11 +33,20 @@ namespace Thrive
 			m_View.setCenter(sf::Vector2f(x, y));
 		}
 
-		void Move(float x, float y)
+
+		//Method		: void Move(float x, float y)
+		//Parameters	: (float x, float y)
+		//Returns		: void
+		//Description   : This method is used when the camera moves
+		void Move (float x, float y)
 		{
 			m_View.move(sf::Vector2f(x, y));
 		}
 
+		//Method		: void SetSize(float width, float height)
+		//Parameters	: (float width, float height)
+		//Returns		: void
+		//Description   : This method is used to set the size of the camera
 		void SetSize(float width, float height)
 		{
 			m_View.setSize(sf::Vector2f(width, height));
@@ -47,6 +56,10 @@ namespace Thrive
 			m_View.setCenter(center);
 		}
 
+		//Method		: sf::Vector2f GetPosition() const
+		//Parameters	: ()
+		//Returns		: m_View.getCenter(); 
+		//Description   : This method will get the center of the current view. 
 		sf::Vector2f GetPosition() const
 		{
 			return m_View.getCenter();
