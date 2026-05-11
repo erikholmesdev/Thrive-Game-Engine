@@ -8,6 +8,6 @@
 
 ## Event System
 - Keyboard events class diagram: [here](Keyboard%20Event%20Class%20Diagram.drawio.png)
-- Mouse events class diagram: [here]()
+- Mouse events class diagram: [here](Mouse%20Event%20Diagram.drawio.png)
 - Window events class diagram: [here]()
 - Game engine event system diagram: [here]()
