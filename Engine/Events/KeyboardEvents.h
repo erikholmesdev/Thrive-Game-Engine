@@ -4,15 +4,15 @@
 //Description: This file will contain the KeyboardEvents
 
 #pragma once
-
 #include <pch.h>
-
-#pragma once
 #include "Event.h"
 #include <SFML/Window/Keyboard.hpp>
 
 namespace Thrive
 {
+    //Class		 : KeyboardEvent
+	//Description: This is the Event class. This will be the base class for all the keyboard events. 
+
     class KeyboardEvent : public Event
     {
     public:
@@ -27,7 +27,8 @@ namespace Thrive
         sf::Keyboard::Key m_KeyCode;
     };
 
-
+    //Class		 : KeyPressed
+	//Description: This is the KeyPressed class. It is a devired from the keyboard event class. 
     class KeyPressed : public KeyboardEvent
     {
     public:
@@ -35,7 +36,7 @@ namespace Thrive
             : KeyboardEvent(key) {
         }
 
-        static EventType GetStaticType() { return EventType::KeyPressed; }
+        static EventType GetStaticType() { return EventType::KeyPressed; } // return 2
 
         EventType GetEventType() const override
         {
@@ -43,6 +44,8 @@ namespace Thrive
         }
     };
 
+    //Class		 :  KeyReleased
+	//Description: This is the KeyReleased class. It is a devired from the keyboard event class. 
     class KeyReleased : public KeyboardEvent
     {
     public:
@@ -50,7 +53,7 @@ namespace Thrive
             : KeyboardEvent(key) {
         }
 
-        static EventType GetStaticType() { return EventType::KeyReleased; }
+        static EventType GetStaticType() { return EventType::KeyReleased; } //return 3 
 
         EventType GetEventType() const override
         {
