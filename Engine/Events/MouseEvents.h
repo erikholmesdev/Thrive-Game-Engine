@@ -12,6 +12,8 @@
 
 namespace Thrive
 {
+    //Class		 : MouseEvent
+	//Description: This will be our base Mouse Event class. This class has two methods that will get the x and y location of the mouse. 
     class MouseEvent : public Event
     {
     public:
@@ -22,11 +24,17 @@ namespace Thrive
         float GetX() const { return m_MouseX; }
         float GetY() const { return m_MouseY; }
 
+
+  
+
     protected:
         float m_MouseX;
         float m_MouseY;
+        sf::Mouse::Button m_Button;
     };
 
+    //Class		 : MouseMoveEvent 
+	//Description: This class is a devired from the MouseEvent class. 
     class MouseMoveEvent : public MouseEvent
     {
     public:
@@ -42,17 +50,33 @@ namespace Thrive
         }
     };
 
-    class MouseButtonPressedEvent : public Event
+    //Class		 : MouseButtonEvent 
+	//Description: This class will be a base class to all the mouse button actiosn. 
+    class MouseButtonEvent : public MouseEvent
+    {
+    public:
+        MouseButtonEvent(sf::Mouse::Button button, float x, float y)
+            : MouseEvent(x, y), m_Button(button) {
+        }
+
+        sf::Mouse::Button GetMouseButton() const {
+            return m_Button;
+        }
+
+    protected:
+        sf::Mouse::Button m_Button;
+    };
+
+
+
+    //Class		 : MouseBUttonPressedEvent
+	//Description: This class will be a dirived class from the MouseButtonEvent. 
+    class MouseButtonPressedEvent : public MouseButtonEvent
     {
     public:
         MouseButtonPressedEvent(sf::Mouse::Button button, float x, float y)
-            : m_Button(button), m_MouseX(x), m_MouseY(y) {
+            : MouseButtonEvent(button, x, y) {
         }
-
-        sf::Mouse::Button GetMouseButton() const { return m_Button; }
-
-        float GetX() const { return m_MouseX; }
-        float GetY() const { return m_MouseY; }
 
         static EventType GetStaticType() { return EventType::MouseButtonPressed; }
 
@@ -62,22 +86,19 @@ namespace Thrive
         }
 
     private:
-        sf::Mouse::Button m_Button;
-        float m_MouseX, m_MouseY;
+       
+       
     };
 
-    class MouseButtonReleasedEvent : public Event
+    //Class		 : MouseButtonReleasedEvent
+	//Description: This class is a devired class from MouseButtonEvent. 
+    class MouseButtonReleasedEvent : public MouseButtonEvent
     {
     public:
         MouseButtonReleasedEvent(sf::Mouse::Button button, float x, float y)
-            : m_Button(button), m_MouseX(x), m_MouseY(y) {
+            : MouseButtonEvent(button, x, y) {
         }
-
-        sf::Mouse::Button GetMouseButton() const { return m_Button; }
-
-        float GetX() const { return m_MouseX; }
-        float GetY() const { return m_MouseY; }
-
+       
         static EventType GetStaticType() { return EventType::MouseButtonReleased; }
 
         EventType GetEventType() const override
@@ -85,8 +106,6 @@ namespace Thrive
             return GetStaticType();
         }
 
-    private:
-        sf::Mouse::Button m_Button;
-        float m_MouseX, m_MouseY;
+ 
     };
 }
