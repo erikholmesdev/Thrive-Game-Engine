@@ -9,7 +9,7 @@
 namespace Thrive 
 {
 	//Class		 : Renderer 
-	//Description: This class will contain our renderer. 
+	//Description: This class will contain our renderer. All method of this class are static, 
 	class Renderer {
 		
 	public: 

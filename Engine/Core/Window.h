@@ -31,9 +31,7 @@ namespace Thrive
 
 		//(Engine - Facing) 
 		void PollEvents(const std::function<void(Event&)>& callback); 
-
-		
-
+ 
 	public: 
 
 		//Inline 
