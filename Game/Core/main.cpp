@@ -11,7 +11,16 @@ int main()
 {
 	Thrive::Application* app = Thrive::CreateApplication(); 
 
-	app->Run(); 
+	try 
+	{
+		app->Run();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << " \n"; 
+		delete app;
+	}
+	
 	delete app;
 
 	return 0; 

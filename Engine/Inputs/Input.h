@@ -1,3 +1,8 @@
+//File		 :  Input.h
+//Programmer : 
+//Date		 : May 06, 2026 
+//Description: This file contains the input class. 
+
 #pragma once
 #include "Key.h"
 #include <array>
@@ -5,6 +10,8 @@
 
 namespace Thrive
 {
+	//Class		 : Input
+	//Description: This is the input class declaration. 
 	class Input
 	{
 	public: 

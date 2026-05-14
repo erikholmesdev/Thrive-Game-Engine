@@ -26,8 +26,13 @@ namespace Thrive
 	//Description   : This method will be used to push an overlay to our layerstack
 	void LayerStack::PushOverlay (LayerPtr overlay)
 	{
+		if (!overlay)
+			return; // or assert
+
 		m_Layers.push_back(std::move(overlay));
-		m_Layers.back()->OnAttach(); 
+
+		if (m_Layers.back())
+			m_Layers.back()->OnAttach();
 	}
 
 

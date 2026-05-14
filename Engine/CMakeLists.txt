@@ -55,6 +55,11 @@ target_link_libraries(Engine
         ImGui-SFML::ImGui-SFML
 )
 
+# target_compile_definitions(Engine
+#     PUBLIC
+#         IMGUI_USER_CONFIG="imconfig-SFML.h"
+# )
+
 # Precompiled header containing the c++ standard lib
 target_precompile_headers(Engine
     PRIVATE

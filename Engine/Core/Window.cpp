@@ -53,8 +53,8 @@ namespace Thrive
 	//Method		: void Window::PollEvents(const std::function<void(Event&)>& callback)
 	//Parameters	: const std::function<void(Event&)>& callback
 	//Returns		: void
-	//Description   : 
-	void Window::PollEvents(const std::function<void(Event&)>& callback)
+	//Description   : This method will be used to poll current incoming events. 
+	void Window::PollEvents(const std::function <void(Event&)>& callback)
 	{
 		while (const std::optional event = m_RenderWindow.pollEvent())
 		{
@@ -75,7 +75,7 @@ namespace Thrive
     std::unique_ptr<Event> Window::TranslateEvent(const sf::Event& e)
     {
         // ============================
-        // INPUT SYSTEM HOOK (MISSING PIECE)
+        // INPUT SYSTEM HOOK 
         // ============================
         if (auto key = e.getIf<sf::Event::KeyPressed>())
         {

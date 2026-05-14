@@ -1,6 +1,10 @@
 @echo off
 cd ..
 
+REM -- Might need python too!!! 
+
+REM -- Make sure who ever is using this repo has git.
+
 REM --- ALWAYS ensure submodules are correct ---
 git submodule sync --recursive
 git submodule update --init --recursive
@@ -14,9 +18,9 @@ Rem Make build dir. This is where the solution will live.
 mkdir build
 
 REM This is for setting up the right version for the project
+
 cd ThirdParty/imgui
 git checkout v1.91.1-docking
-
 cd ../SFML
 git checkout 3.0.x
 

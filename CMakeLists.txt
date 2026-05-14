@@ -24,9 +24,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 # -------------------------
 set(IMGUI_SFML_FIND_SFML OFF CACHE BOOL "" FORCE)
 
-# -------------------------
+# ---------------------------------------------------------
 # Third party root
-# -------------------------
+# ---------------------------------------------------------
 set(THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
 
 # =========================================================

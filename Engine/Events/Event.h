@@ -5,7 +5,7 @@
 
 #pragma once
 #include <pch.h>
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 namespace Thrive
 {
