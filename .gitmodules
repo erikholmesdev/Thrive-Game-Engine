@@ -17,3 +17,8 @@
     path = ThirdParty/spdlog
     url = https://github.com/gabime/spdlog.git
     branch = v1.x
+    
+[submodule "ThirdParty/imgui-filebrowser"]
+	path = ThirdParty/imgui-filebrowser
+	url = https://github.com/AirGuanZ/imgui-filebrowser.git
+	branch = dockable
