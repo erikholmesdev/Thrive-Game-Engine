@@ -56,8 +56,6 @@ public:
 		float cameraPostionX = m_Camera.GetPosition().x; 
 		float cameraPostionY = m_Camera.GetPosition().y;
 
-
-
 		LOG_CORE_TRACE("Camera location x: {} | y: {}", cameraPostionX, cameraPostionY);
 	}
 
