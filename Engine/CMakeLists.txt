@@ -17,6 +17,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Scenes/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Common/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Common/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Config/*.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Config/*.cpp
