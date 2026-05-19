@@ -6,8 +6,8 @@ namespace Thrive
 	//Class		 : Time
 	//Description: This class will keep time. Some of the key functionality are:
 	//				- Getting the delta time
-	//				- Getting 
-	//				-
+	//				- Getting the time
+	//				- Updating time per frame
 	class Time
 	{
 	public: 

@@ -7,7 +7,7 @@ namespace Thrive
 	//Parameters	: ()
 	//Returns		: float
 	//Description   : This method will restart the clock. 
-	float Clock::Restart()
+	float Clock::Restart() 
 	{
 		return m_Clock.restart().asSeconds(); 
 	}
