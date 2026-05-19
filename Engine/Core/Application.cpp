@@ -7,18 +7,24 @@
 #include "Application.h"
 #include "Log.h"
 #include "Input.h"
+#include "Time.h"
 
 namespace Thrive
 {
 	//Method		: Application::Application
 	//Parameters	: ()
-	//Description   : This will setup our application by setting up all the window attributes
+	//Description   : This will setup our application by getting the window ready, and the renderer ready. If in debug mode then console logging is turned on. 
 	Application::Application ()
 	{
 		m_Window.InitWindow(); 
+
 		Renderer::Init(&m_Window.GetWindow()); 
 
 		Input::Init(); 
+
+		m_LayerStack.PushOverlay(
+			std::make_unique <ImGuiLayer>(m_Window.GetWindow())
+		);
 
 		// ===============
 		// + Debug Mode  +
@@ -26,11 +32,7 @@ namespace Thrive
 		// - Turns on logging
 		// - Init the DearImGui layer. 
 		#ifdef THRIVE_DEBUG
-				Log::Init();
-
-				m_LayerStack.PushOverlay(
-					std::make_unique <ImGuiLayer> (m_Window.GetWindow())
-				);
+				Log::Init();	
 		#endif
 	}
 	
@@ -49,7 +51,9 @@ namespace Thrive
 		//Game loop
 		while (m_Window.GetWindow().isOpen())
 		{
-			float deltaTime = m_Clock.restart().asSeconds(); 
+			Time::Update(); 
+
+			float deltaTime = Time::GetDeltaTime(); 
 
 			//Events 
 			//Lamda so we can use the Application::DispatchEvent(Event& e) method. 
@@ -72,18 +76,15 @@ namespace Thrive
 				layer->OnRender(); 
 			}
 
-			//ImGuiLayer 
-			#ifdef THRIVE_DEBUG
-
-				ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
-				// ImGuiLayer::DrawSpace(); //Currently not needed. 
+			ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
+			// ImGuiLayer::DrawSpace(); //Currently not needed. 
 			
-				for (auto& layer : m_LayerStack)
-					layer->OnImGuiRender();
+			for (auto& layer : m_LayerStack)
+				layer->OnImGuiRender();
 
-				// This is where everything updates. 
-				ImGuiLayer::End(m_Window.GetWindow());
-			#endif 
+			// This is where everything updates. 
+			ImGuiLayer::End(m_Window.GetWindow());
+			
 
 			Renderer::EndFrame();
 			Input::EndFrame(); 
