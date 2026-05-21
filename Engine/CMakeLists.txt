@@ -20,7 +20,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Common/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Common/Tools/*.h
-      ${CMAKE_CURRENT_SOURCE_DIR}/Common/Tools/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Common/Tools/*.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Config/*.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Config/*.cpp
@@ -41,6 +41,7 @@ target_include_directories(Engine
         ${CMAKE_CURRENT_SOURCE_DIR}/Events
         ${CMAKE_CURRENT_SOURCE_DIR}/Inputs
         ${CMAKE_CURRENT_SOURCE_DIR}/Common
+        ${CMAKE_CURRENT_SOURCE_DIR}/Common/Tools
         
         ${CMAKE_CURRENT_SOURCE_DIR}/Scenes
         ${CMAKE_CURRENT_SOURCE_DIR}/Config
@@ -48,6 +49,8 @@ target_include_directories(Engine
         # Header file lib.
         ${PROJECT_SOURCE_DIR}/ThirdParty/spdlog/include
         ${PROJECT_SOURCE_DIR}/ThirdParty/imgui-filebrowser
+        ${PROJECT_SOURCE_DIR}/ThirdParty/entt/src/entt
+
 )
 
 # Link libs 

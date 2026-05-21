@@ -4,8 +4,6 @@
 //Date		 : Dec 18, 2025
 //Description: This file contains the log class. The log class allows messages to appear in the console or log file. 
 
-
-
 #include <spdlog/spdlog.h>
 #include <spdlog\sinks\stdout_color_sinks.h>
 #include <spdlog\sinks\basic_file_sink.h>
@@ -33,14 +31,14 @@ namespace Thrive
 				// File sink 
 				auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("../engine/log/engine.log", true);
 
-				std::vector<spdlog::sink_ptr> sinks{ consoleSink, fileSink };
+				std::vector<spdlog::sink_ptr> sinks { consoleSink, fileSink };
 
 				
-				m_CoreLogger = std::make_shared<spdlog::logger>("CORE", sinks.begin(),sinks.end());
+				m_CoreLogger = std::make_shared<spdlog::logger> ("CORE", sinks.begin(),sinks.end());
 			}
 			else //console only 
 			{
-				m_CoreLogger = std::make_shared<spdlog::logger>("CORE",consoleSink);
+				m_CoreLogger = std::make_shared<spdlog::logger> ("CORE",consoleSink);
 			}
 
 			m_CoreLogger->set_level(spdlog::level::trace);

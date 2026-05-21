@@ -7,7 +7,8 @@
 #include "Application.h"
 #include "Log.h"
 #include "Input.h"
-#include "Time.h"
+#include "ThriveTime.h"
+
 
 namespace Thrive
 {
@@ -19,11 +20,11 @@ namespace Thrive
 		m_Window.InitWindow(); 
 
 		Renderer::Init(&m_Window.GetWindow()); 
-
+		
 		Input::Init(); 
 
 		m_LayerStack.PushOverlay(
-			std::make_unique <ImGuiLayer>(m_Window.GetWindow())
+			std::make_unique <ImGuiLayer> (m_Window.GetWindow())
 		);
 
 		// ===============
@@ -120,17 +121,17 @@ namespace Thrive
 		EventDispatcher dispatcher(e);
 
 		dispatcher.Dispatch <WindowCloseEvent> ([this](WindowCloseEvent&)
-			{
-				m_Window.CloseWindow();
-				return true;
-			});
+		{
+			m_Window.CloseWindow();
+			return true;
+		});
 		
 
 		dispatcher.Dispatch <WindowResizeEvent> ([this](WindowResizeEvent& ev)
-			{
-				Renderer::OnWindowResize(ev.GetWidth(), ev.GetHeight());
-				return true;
-			});
+		{
+			Renderer::OnWindowResize(ev.GetWidth(), ev.GetHeight());
+			return true;
+		});
 		
 		// Send to layers
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)

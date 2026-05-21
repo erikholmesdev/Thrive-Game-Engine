@@ -42,7 +42,11 @@ public:
 		float speed = 300.f;
 
 		if (Thrive::Input::IsKeyDown(Thrive::Key::W))
+		{
 			m_Camera.Move(0.f, -speed * dt);
+		
+		}
+			
 
 		if (Thrive::Input::IsKeyDown(Thrive::Key::S))
 			m_Camera.Move(0.f, speed * dt);

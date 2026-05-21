@@ -4,7 +4,7 @@
 //Description: This file will contain all the Time class method defintions. 
 
 #include <pch.h>
-#include "Time.h"
+#include "ThriveTime.h"
 
 namespace Thrive
 {

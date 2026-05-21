@@ -5,6 +5,7 @@
 
 #include <pch.h>
 #include "Renderer.h"
+#include "ThriveAssert.h"
 
 namespace Thrive
 {
@@ -29,7 +30,7 @@ namespace Thrive
 	//Description   : This methods purpose is to clear the screen for our first frame 
 	void Renderer::BeginFrame ()
 	{
-		assert(s_Window != nullptr && "Renderer not initialized!");
+		THRIVE_ASSERT(s_Window != nullptr,"Renderer not initialized!"); 
 		s_Window->clear(); 
 	}
 
