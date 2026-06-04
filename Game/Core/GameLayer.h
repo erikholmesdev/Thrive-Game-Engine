@@ -14,9 +14,6 @@
 #include "Input.h"
 #include "EventDispatcher.h"
 
-
-
-
 //Class		 : GameLayer
 //Description: This class is derived from our engines layer class found in the Layer.h 
 class GameLayer : public Thrive::Layer
@@ -41,13 +38,11 @@ public:
 	{
 		float speed = 300.f;
 
-		if (Thrive::Input::IsKeyDown(Thrive::Key::W))
+	if (Thrive::Input::IsKeyDown(Thrive::Key::W))
 		{
 			m_Camera.Move(0.f, -speed * dt);
 		
 		}
-			
-
 		if (Thrive::Input::IsKeyDown(Thrive::Key::S))
 			m_Camera.Move(0.f, speed * dt);
 

@@ -1,3 +1,11 @@
+//File		 : ThriveAssert.h
+//Programmer : 
+//Date		 : May 25, 2026
+//Description: This file contains the Thrive Assert macro. This marco will 
+//                         - Take in an expression and a message as parameters. 
+//                         - Run the ReportAssertionFailure function. 
+//                         - Print out all the asertion failure information. Example ( File, Line, Message).   
+
 #pragma once
 
 #include <iostream>
@@ -12,7 +20,7 @@
 //	              int line,
 //	              const char* function
 //Returns       : void
-//Description   : This function will take in an expression, and a message and print out all the information for the user. 
+//Description   : This function will take in an expression, message, file, and function as strings. 
 /*
 	Notes: This is a very common way to to write an assert function.
 */
@@ -58,7 +66,7 @@ inline void ReportAssertionFailure(
 			}                                                             \
 		} while (0)
 
-#else
+#else //Release mode
 
 #define THRIVE_ASSERT(expr, msg) ((void)0)
 

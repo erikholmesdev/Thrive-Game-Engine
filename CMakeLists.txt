@@ -24,9 +24,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 # -------------------------
 set(IMGUI_SFML_FIND_SFML OFF CACHE BOOL "" FORCE)
 
-# ---------------------------------------------------------
+#==========================================================
 # Third party root
-# ---------------------------------------------------------
+#==========================================================
 set(THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/ThirdParty)
 
 # =========================================================
@@ -37,7 +37,7 @@ add_subdirectory(${THIRD_PARTY_DIR}/SFML)
 # =========================================================
 # ImGui (core)
 # =========================================================
-set(IMGUI_DIR ${THIRD_PARTY_DIR}/imgui) # This will be used 
+set(IMGUI_DIR ${THIRD_PARTY_DIR}/imgui) # This is used in the Scripts/imgui. 
 add_subdirectory (${CMAKE_SOURCE_DIR}/Scripts/ImGui)
 
 # =========================================================

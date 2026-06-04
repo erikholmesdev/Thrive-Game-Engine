@@ -49,8 +49,7 @@ target_include_directories(Engine
         # Header file lib.
         ${PROJECT_SOURCE_DIR}/ThirdParty/spdlog/include
         ${PROJECT_SOURCE_DIR}/ThirdParty/imgui-filebrowser
-        ${PROJECT_SOURCE_DIR}/ThirdParty/entt/src/entt
-
+        ${PROJECT_SOURCE_DIR}/ThirdParty/entt/src
 )
 
 # Link libs 
