@@ -33,6 +33,9 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${ENGINE_SOURCES})
 # Engine Lib
 add_library(Engine STATIC ${ENGINE_SOURCES})
 
+# FORCE C++20 ON THIS TARGET (IMPORTANT)
+target_compile_features(Engine PUBLIC cxx_std_20)
+
 # Folders included. 
 target_include_directories(Engine
     PUBLIC

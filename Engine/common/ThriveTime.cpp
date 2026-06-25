@@ -49,7 +49,7 @@ namespace Thrive
 	}
 
 	//Method		: GetTime
-	//Parameters	: ()
+	//Parameters	: ()'
 	//Returns		: float
 	//Description   : This method will return the total time
 	float Time::GetTime(){
