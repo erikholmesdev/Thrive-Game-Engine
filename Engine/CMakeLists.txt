@@ -3,6 +3,9 @@ file(GLOB_RECURSE ENGINE_SOURCES
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Core/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Core/*.h
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/Platform/*.cpp
+     ${CMAKE_CURRENT_SOURCE_DIR}/Platform/*.h
     
     ${CMAKE_CURRENT_SOURCE_DIR}/Graphics/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Graphics/*.h

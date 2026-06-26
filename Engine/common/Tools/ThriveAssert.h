@@ -5,6 +5,8 @@
 //                         - Take in an expression and a message as parameters. 
 //                         - Run the ReportAssertionFailure function. 
 //                         - Print out all the asertion failure information. Example ( File, Line, Message).   
+// 
+// 
 
 #pragma once
 
@@ -47,11 +49,13 @@ inline void ReportAssertionFailure(
 
 //This macro is designed for the thrive game engine. 
 
-#ifdef THRIVE_DEBUG
+#ifdef THRIVE_DEBUG // *** CHANGE NAME HERE *** 
 
 	//Macro				: THRIVE_ASSERT
 	//Parameter         : (expr, msg)
 	//Description		: This macro will take in an expression and a string as a message. 
+
+	// *** CHANGE NAME *** 
 	#define THRIVE_ASSERT(expr, msg)									  \
 	 do                                                                   \
 		{                                                                 \

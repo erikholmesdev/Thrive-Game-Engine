@@ -4,20 +4,24 @@
 
 namespace Thrive
 {
-	class Scene; 
+	class Scene; // Forward delcaration. 
 
+	//Class		 : Entity 
+	//Description: This is the Entity class. 
 	class Entity
 	{
 	public:
 		Entity() = default; 
+
+		//Constructor : Entity (entt::entity handle, Scene * scene)  
+		//Description : This class will take in an Entity handle and the current scene
 		Entity(entt::entity handle, Scene* scene)
 			: m_EntityHandle(handle),
 			m_Scene(scene) 
 		{
 		}
-			  
 
-		operator bool() const;
+		explicit operator bool() const;
 
 	private: 
 		entt::entity m_EntityHandle{ entt::null };
