@@ -1,31 +1,27 @@
 @echo off
-cd ..
 
-REM -- Might need python too!!! 
+REM This is the git release version file. 
 
-REM -- Make sure who ever is using this repo has git.
+call releaseVersion.bat 
+
+cd ..\..
+
+dir
 
 REM --- ALWAYS ensure submodules are correct ---
+
 git submodule sync --recursive
 git submodule update --init --recursive
 
 REM --- Clean build directory (IMPORTANT) ---
+
 if exist build (
     rmdir /s /q build
 )
 
 Rem Make build dir. This is where the solution will live. 
+
 mkdir build
-
-REM This is for setting up the right version for the project
-
-cd ThirdParty/imgui
-git checkout v1.91.1-docking
-cd ../SFML
-git checkout 3.0.x
-
-REM Back to main project dir: Thrive 
-cd ..\.. 
 
 cd build
 

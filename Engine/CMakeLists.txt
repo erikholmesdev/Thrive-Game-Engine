@@ -42,12 +42,14 @@ target_compile_features(Engine PUBLIC cxx_std_20)
 # Folders included. 
 target_include_directories(Engine
     PUBLIC
+
         ${CMAKE_CURRENT_SOURCE_DIR}/Core
         ${CMAKE_CURRENT_SOURCE_DIR}/Graphics
         ${CMAKE_CURRENT_SOURCE_DIR}/Events
         ${CMAKE_CURRENT_SOURCE_DIR}/Inputs
         ${CMAKE_CURRENT_SOURCE_DIR}/Common
         ${CMAKE_CURRENT_SOURCE_DIR}/Common/Tools
+        ${CMAKE_CURRENT_SOURCE_DIR}/Platform
         
         ${CMAKE_CURRENT_SOURCE_DIR}/Scenes
         ${CMAKE_CURRENT_SOURCE_DIR}/Config
@@ -55,8 +57,12 @@ target_include_directories(Engine
         # Header file lib.
         ${PROJECT_SOURCE_DIR}/ThirdParty/spdlog/include
         ${PROJECT_SOURCE_DIR}/ThirdParty/imgui-filebrowser
-        ${PROJECT_SOURCE_DIR}/ThirdParty/entt/src
 )
+
+target_include_directories(EnginePrivate PRIVATE
+     ${PROJECT_SOURCE_DIR}ThirdParty/entt/src
+)
+
 
 # Link libs 
 target_link_libraries(Engine

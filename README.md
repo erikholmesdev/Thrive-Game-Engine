@@ -7,9 +7,9 @@ This engine is developed from scratch and is intended to help learning C ++ and 
 ---
 
 ## Project Updates
-## (May 9, 2026)
+## (June 25, 2026)
 
-Currently planning out how I am going to create entities, and figure out a way to connect these entities to inputs.s
+Working on adding the ENTT lib to the code. Need to add it as its own lib in the Engine\cmakelists.txt
 --- 
 
 ## Project Setup 
@@ -54,6 +54,7 @@ All project requirements can be found [here](Docs/Documentation/Requirements/Req
 - UI: Dear ImGui version 1.91-docking 
 - Logging: Spdlog
 - Build System: CMake 
+- ENTT: ECS
 
 
 --- 

@@ -4,7 +4,7 @@
 
 namespace Thrive
 {
-	class Entity; // Forward declaration for entity 
+	
 
 	//Class		 : Scene
 	//Description: This class will contain the Scene object. 
@@ -14,11 +14,11 @@ namespace Thrive
 		Scene() = default;
 		~Scene() = default;
 
-		Entity CreateEntity();
-		void DestoryEntity(Entity entity); 
+		void CreateEntity();
+	
 
 	private: 
 		entt::registry m_Registry;
-		friend class Entity; 
+		
 	};
 }

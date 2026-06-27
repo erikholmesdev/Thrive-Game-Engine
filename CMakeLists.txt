@@ -13,6 +13,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_compile_definitions(NOMINMAX)
+add_compile_definitions(WIN32_LEAN_AND_MEAN)
+
+
 # -------------------------
 # Output directories
 # -------------------------
@@ -47,6 +51,20 @@ add_subdirectory (${CMAKE_SOURCE_DIR}/Scripts/ImGui)
 set(SFML_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(SFML_BUILD_DOC OFF CACHE BOOL "" FORCE)
 add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
+
+#==========================================================
+# ENTT ECS lib
+#==========================================================
+# set(ENTT_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+# set(ENTT_INSTALL OFF CACHE BOOL "" FORCE)
+
+
+# add_subdirectory(${THIRD_PARTY_DIR}/entt)
+# # EnTT does not always expose a stable alias in submodule mode
+# if (NOT TARGET EnTT::EnTT)
+#     add_library(EnTT::EnTT ALIAS EnTT)
+# endif()
+
 
 # =========================================================
 # Engine + Game
