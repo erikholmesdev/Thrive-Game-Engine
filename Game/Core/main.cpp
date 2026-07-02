@@ -7,8 +7,11 @@
 #include <pch.h>
 #include "Application.h"
 
+
 int main()
 {
+
+	
 	Thrive::Application* app = Thrive::CreateApplication(); 
 
 	try 

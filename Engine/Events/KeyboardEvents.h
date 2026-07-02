@@ -28,7 +28,7 @@ namespace Thrive
     };
 
     //Class		 : KeyPressed
-	//Description: This is the KeyPressed class. It is a devired from the keyboard event class. 
+	//Description: This is the KeyPressed class. It is a derived from the keyboard event class. 
     class KeyPressed : public KeyboardEvent
     {
     public:
@@ -45,7 +45,7 @@ namespace Thrive
     };
 
     //Class		 :  KeyReleased
-	//Description: This is the KeyReleased class. It is a devired from the keyboard event class. 
+	//Description: This is the KeyReleased class. It is a derived from the keyboard event class. 
     class KeyReleased : public KeyboardEvent
     {
     public:

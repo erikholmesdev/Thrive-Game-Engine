@@ -6,6 +6,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+
 namespace Thrive
 {
 	//Class		 : Camera
@@ -17,7 +18,7 @@ namespace Thrive
 
 		//Constructor : Camera
 		//Parameters  :	(float width, float height) 
-		//Descritpion : This constructor will set of our camera and in the middle of the screen
+		//Description : This constructor will set of our camera and in the middle of the screen
 		Camera(float width, float height)
 		{
 			m_View.setSize(sf::Vector2f(width, height));

@@ -4,7 +4,7 @@
 //Description: This file will contain all the Time class method defintions. 
 
 #include <pch.h>
-#include "Time.h"
+#include "ThriveTime.h"
 
 namespace Thrive
 {
@@ -49,7 +49,7 @@ namespace Thrive
 	}
 
 	//Method		: GetTime
-	//Parameters	: ()
+	//Parameters	: ()'
 	//Returns		: float
 	//Description   : This method will return the total time
 	float Time::GetTime(){

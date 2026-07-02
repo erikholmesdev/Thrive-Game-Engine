@@ -7,7 +7,8 @@
 #include "Application.h"
 #include "Log.h"
 #include "Input.h"
-#include "Time.h"
+#include "ThriveTime.h"
+
 
 namespace Thrive
 {
@@ -19,11 +20,11 @@ namespace Thrive
 		m_Window.InitWindow(); 
 
 		Renderer::Init(&m_Window.GetWindow()); 
-
+		
 		Input::Init(); 
 
 		m_LayerStack.PushOverlay(
-			std::make_unique <ImGuiLayer>(m_Window.GetWindow())
+			std::make_unique<ImGuiLayer>(m_Window.GetWindow())
 		);
 
 		// ===============
@@ -51,45 +52,75 @@ namespace Thrive
 		//Game loop
 		while (m_Window.GetWindow().isOpen())
 		{
-			Time::Update(); 
+			Time::Update();
 
-			float deltaTime = Time::GetDeltaTime(); 
+			const float deltaTime = Time::GetDeltaTime();
 
-			//Events 
-			//Lamda so we can use the Application::DispatchEvent(Event& e) method. 
-			m_Window.PollEvents([this](Event& e)
-		    {
-				this->DispatchEvent(e); 
-			});
-			
-			//Update Layers 
-			for (auto& layer : m_LayerStack)
-			{
-				layer->OnUpdate(deltaTime); 
-			}
+			ProcessEvents();
+			Update(deltaTime);
+			Render();
 
-			//Renderer
-			Renderer::BeginFrame(); 
-			Renderer::SetView(m_Window.GetWindow().getDefaultView());
-			for (auto& layer : m_LayerStack)
-			{
-				layer->OnRender(); 
-			}
-
-			ImGuiLayer::Begin(m_Window.GetWindow(), m_Clock); 
-			// ImGuiLayer::DrawSpace(); //Currently not needed. 
-			
-			for (auto& layer : m_LayerStack)
-				layer->OnImGuiRender();
-
-			// This is where everything updates. 
-			ImGuiLayer::End(m_Window.GetWindow());
-			
-
-			Renderer::EndFrame();
-			Input::EndFrame(); 
+			Input::EndFrame();
 		}
 	}	
+
+	//Method		: Application::ProcessEvents()
+	//Parameters	:
+	//Returns		: void
+	//Description   : This method will call the dispatch events method. 
+	void Application::ProcessEvents()
+	{
+		m_Window.PollEvents([this](Event& e)
+			{
+				this->DispatchEvent(e);
+			});
+	}
+
+	//Method		: Application::Update(float deltaTime)
+	//Parameters	: float deltaTime
+	//Returns		: void
+	//Description   : This method will update our layer, 
+	void Application::Update(float deltaTime)
+	{
+		for (auto& layer : m_LayerStack)
+		{
+			layer->OnUpdate(deltaTime);
+		}
+	}
+
+	//Method		: Application::Render()
+	//Parameters	:
+	//Returns		: void
+	//Description   : This method will render our engine objects. 
+	void Application::Render()
+	{
+		Renderer::BeginFrame();
+
+		Renderer::SetView(
+			m_Window.GetWindow().getDefaultView()
+		);
+
+		for (auto& layer : m_LayerStack)
+		{
+			layer->OnRender();
+		}
+
+		m_ImGuiLayer->Begin(
+			m_Window.GetWindow(),
+			m_Clock
+		);
+
+		for (auto& layer : m_LayerStack)
+		{
+			layer->OnImGuiRender();
+		}
+
+		m_ImGuiLayer->End(
+			m_Window.GetWindow()
+		);
+
+		Renderer::EndFrame();
+	}
 	
 	//Method		: Application::PushLayer
 	//Parameters	: (std::unique_ptr<Layer> layer)
@@ -101,14 +132,7 @@ namespace Thrive
 	}
 
 
-	//Method		: Application::Update()
-	//Parameters	:
-	//Returns		: void
-	//Description   :
-	void Application::Update ()
-	{
 
-	}
 
 	//Method		: Application::DispatchEvent(Event& e)
 	//Parameters	: (Event& e)
@@ -120,17 +144,17 @@ namespace Thrive
 		EventDispatcher dispatcher(e);
 
 		dispatcher.Dispatch <WindowCloseEvent> ([this](WindowCloseEvent&)
-			{
-				m_Window.CloseWindow();
-				return true;
-			});
+		{
+			m_Window.CloseWindow();
+			return true;
+		});
 		
 
 		dispatcher.Dispatch <WindowResizeEvent> ([this](WindowResizeEvent& ev)
-			{
-				Renderer::OnWindowResize(ev.GetWidth(), ev.GetHeight());
-				return true;
-			});
+		{
+			Renderer::OnWindowResize(ev.GetWidth(), ev.GetHeight());
+			return true;
+		});
 		
 		// Send to layers
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)

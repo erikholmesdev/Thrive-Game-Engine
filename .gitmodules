@@ -22,3 +22,9 @@
 	path = ThirdParty/imgui-filebrowser
 	url = https://github.com/AirGuanZ/imgui-filebrowser.git
 	branch = dockable
+
+[submodule "ThirdParty/entt"]
+	path = ThirdParty/entt
+	url = https://github.com/skypjack/entt.gitS
+    branch = v3.15.0
+  
