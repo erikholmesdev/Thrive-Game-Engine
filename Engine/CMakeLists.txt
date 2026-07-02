@@ -57,12 +57,9 @@ target_include_directories(Engine
         # Header file lib.
         ${PROJECT_SOURCE_DIR}/ThirdParty/spdlog/include
         ${PROJECT_SOURCE_DIR}/ThirdParty/imgui-filebrowser
-)
 
-target_include_directories(EnginePrivate PRIVATE
-     ${PROJECT_SOURCE_DIR}ThirdParty/entt/src
+        ${PROJECT_SOURCE_DIR}/ThirdParty/entt/src
 )
-
 
 # Link libs 
 target_link_libraries(Engine
@@ -73,11 +70,6 @@ target_link_libraries(Engine
         ImGui
         ImGui-SFML::ImGui-SFML
 )
-
-# target_compile_definitions(Engine
-#     PUBLIC
-#         IMGUI_USER_CONFIG="imconfig-SFML.h"
-# )
 
 # Precompiled header containing the c++ standard lib
 target_precompile_headers(Engine

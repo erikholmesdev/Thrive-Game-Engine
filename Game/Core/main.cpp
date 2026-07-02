@@ -6,14 +6,10 @@
 
 #include <pch.h>
 #include "Application.h"
-#include <entt/entity/registry.hpp>
+
 
 int main()
 {
-
-	entt::registry registry; 
-	auto e = registry.create(); 
-
 
 	
 	Thrive::Application* app = Thrive::CreateApplication(); 

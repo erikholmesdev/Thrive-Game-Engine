@@ -52,18 +52,11 @@ set(SFML_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(SFML_BUILD_DOC OFF CACHE BOOL "" FORCE)
 add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
 
-#==========================================================
-# ENTT ECS lib
-#==========================================================
-# set(ENTT_BUILD_TESTING OFF CACHE BOOL "" FORCE)
-# set(ENTT_INSTALL OFF CACHE BOOL "" FORCE)
 
-
-# add_subdirectory(${THIRD_PARTY_DIR}/entt)
-# # EnTT does not always expose a stable alias in submodule mode
-# if (NOT TARGET EnTT::EnTT)
-#     add_library(EnTT::EnTT ALIAS EnTT)
-# endif()
+# ========================================================= 
+# Header only libs will be called in the Engine 
+#    cmakelists.txt. 
+#===========================================================
 
 
 # =========================================================

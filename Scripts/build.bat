@@ -1,6 +1,5 @@
 @echo off
 
-
 REM --- ALWAYS ensure submodules are correct ---
 
 cd ..
@@ -10,7 +9,9 @@ git submodule update --init --recursive
 
 REM This is the git release version file
 
-call releaseVersion.bat 
+cd Scripts
+
+call releaseVersion.bat
 
 REM --- Clean build directory (IMPORTANT) ---
 
