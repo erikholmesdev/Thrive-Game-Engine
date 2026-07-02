@@ -1,7 +1,7 @@
 #pragma once
 /*
 * @file Log.h
-* @brief This file contains a Log class which is a wrapper class for spdlog
+* @brief This file contains a Log class which is a wrapper class for spdlog.
 */
 #include <string.h>
 #include <spdlog/spdlog.h>
