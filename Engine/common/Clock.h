@@ -1,15 +1,24 @@
-//File		 : Clock.h
-//Programmer : 
-//Date		 : 
-//Description: This file contains the clock class. 
+/*
+*@file Clock.h
+*
+*@brief This file contains the clock class. 
+* 
+*/
 
 #pragma once
 #include <SFML/Graphics.hpp>
 
 namespace Thrive
 {
-	//Class		 : Clock
-	//Description: This is our clock class. 
+/*
+* @brief The clock class is a wrapper for the sfml clock class
+* 
+* @note This clock class includes some methods that include
+*       - Restarting the clock 
+*       - Getting the time in seconds
+*	
+*
+*/
 	class Clock
 	{
 	public:

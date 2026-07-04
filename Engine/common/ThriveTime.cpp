@@ -1,8 +1,10 @@
-//File		 : Time.cpp
-//Programmer : 
-//Date		 : May 12, 2026
-//Description: This file will contain all the Time class method defintions. 
 
+/*
+* @file ThriveTime.cpp
+* 
+* @brief This file contains the Time class definitions
+*
+*/
 #include <pch.h>
 #include "ThriveTime.h"
 

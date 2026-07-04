@@ -1,8 +1,9 @@
 #pragma once
 
 /*
-	This file will be used to declare very common variables that will be used in our whole application. 
-
+* @file Common.h
+* 
+* @brief This file will contain all the common items used within the Thrive project 
 */
 
 namespace Thrive
