@@ -30,6 +30,6 @@ cmake .. -G "Visual Studio 17 2022" -A x64
 
 
 REM *** Comment this out to see error if not building correctly. ***
-cls 
+@REM cls 
 
 echo Run the solution file from the build directory

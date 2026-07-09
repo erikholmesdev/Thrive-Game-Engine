@@ -27,6 +27,10 @@ git checkout v3.15.0
 cd ../spdlog
 git checkout v1.15.3
 
+cd ../googletest
+git fetch origin tag v1.17.0 --no-tags
+git checkout v1.17.0
+
 
 REM --------------------------------------------------------------
 
