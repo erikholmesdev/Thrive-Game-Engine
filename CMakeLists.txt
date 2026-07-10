@@ -1,3 +1,10 @@
+# =======================================================
+#  This is the root cmake file where everything will be 
+#    added together 
+#
+#
+# =======================================================
+
 cmake_minimum_required(VERSION 3.20)
 
 project(Thrive LANGUAGES CXX)
@@ -60,10 +67,26 @@ add_subdirectory(${THIRD_PARTY_DIR}/imgui-sfml)
 
 
 # =========================================================
-# Engine + Game
+# Engine
 # =========================================================
 add_subdirectory(Engine)
+
+# =========================================================
+# Game
+# =========================================================
 add_subdirectory(Game)
+
+# =========================================================
+# Tests
+# =========================================================
+option(THRIVE_BUILD_TESTS "Build Thrive test" ON)
+
+if(THRIVE_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(${THIRD_PARTY_DIR}/googletest)
+    add_subdirectory(Tests)
+endif()
+
 
 # =========================================================
 # Startup project (Visual Studio)

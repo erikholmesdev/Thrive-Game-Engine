@@ -19,12 +19,15 @@
     branch = v1.x
 
 [submodule "ThirdParty/imgui-filebrowser"]
-	path = ThirdParty/imgui-filebrowser
-	url = https://github.com/AirGuanZ/imgui-filebrowser.git
-	branch = dockable
+    path = ThirdParty/imgui-filebrowser
+    url = https://github.com/AirGuanZ/imgui-filebrowser.git
+    branch = dockable
 
 [submodule "ThirdParty/entt"]
-	path = ThirdParty/entt
-	url = https://github.com/skypjack/entt.gitS
+    path = ThirdParty/entt
+    url = https://github.com/skypjack/entt.gitS
     branch = v3.15.0
   
+[submodule "ThirdParty/googletest"]
+    path = ThirdParty/googletest
+    url = https://github.com/google/googletest.git

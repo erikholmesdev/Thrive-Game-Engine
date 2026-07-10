@@ -4,6 +4,7 @@ Thrive is a lightweight C ++ game engine built for learning, experimentation and
 
 This engine is developed from scratch and is intended to help learning C ++ and game engine architecture. 
 
+
 ---
 
 ## Project Updates
@@ -37,7 +38,12 @@ Maybe one day.....
 ### Requirements 
 All project requirements can be found [here](Docs/Documentation/Requirements/Requirements.md).
 
+
 ### Design Documents
+
+The link below contain the address to the google draw where the design diagram will be.
+
+Link to the google draw.[here](https://docs.google.com/drawings/d/1ENuAVW15ILRHDzzFSpWgL8HDh2p4RRgn0UNyWGTKews/edit?usp=sharing)
 
 ### 
 

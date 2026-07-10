@@ -1,8 +1,8 @@
 #pragma once
-//File		 : Log.h
-//Programmer :
-//Date		 : Dec 18, 2025
-//Description: This file contains the log class. The log class allows messages to appear in the console or log file. 
+/*
+* @file Log.h
+* @brief This file contains a Log class which is a wrapper class for spdlog.
+*/
 #include <string.h>
 #include <spdlog/spdlog.h>
 #include <spdlog\sinks\stdout_color_sinks.h>
@@ -28,10 +28,13 @@ namespace Thrive
 	{
 	public:
 
-		//Method	 : Init()
-		//Parameters : bool logFileActive = false
-		//Description: This method will will initialize our logger. If logFileActive = true then a log file will be create in the build/engine/log.
-		//              else logFileActive = false at default and no log file will be created.    
+		/*
+		* @brief Initialize a logging object to be used to communicate between the engine and the programmer. 
+		* 
+		* @param bool logFile = false
+		* 
+		* @warning This class is static and will be used 
+		*/
 		static void Init(bool logFileActive = false)
 		{
 			if (m_CoreLogger) return;
@@ -58,8 +61,15 @@ namespace Thrive
 			spdlog::register_logger(m_CoreLogger);
 		}
 
-		//Method	 : GetLogger
-		//Description: This method will get our logger. 
+		/*
+		* @brief Gets the core logger
+		* 
+		* @note 
+		*  This method is used to get the core logger. 
+		* 
+		* @warning This method is static
+		* @return std::shared_ptr <spdlog::logger>
+		*/
 		inline static std::shared_ptr <spdlog::logger>& GetCoreLogger() { return m_CoreLogger; }
 
 	private:
@@ -69,11 +79,57 @@ namespace Thrive
 }
 
 #ifdef THRIVE_DEBUG //Can be found in the engine/CmakeLists.txt 
-
+	
+	/*
+	* @brief This macro will print out a trace message used for debugging
+	* 
+	* @note 
+	*		This macro can only be used when the project is building debug mode. Nothing will happen if this 
+	*        macro is used in when the project is built in release mode. 
+	* 
+	* @param "Message" or std::string
+	* 
+	*/
 	#define LOG_CORE_TRACE(...)    ::Thrive::Log::GetCoreLogger()->trace(__VA_ARGS__)
+
+	/*
+	* @brief This macro will print out a information message used for debugging 
+	* 
+	* @note
+	*		This macro can only be used when the project is building in debug mode. Nothing will happen if this
+	*		macro is used in when the project is built in release mode.
+	* @param 
+	*/
 	#define LOG_CORE_INFO(...)     ::Thrive::Log::GetCoreLogger()->info(__VA_ARGS__)
+
+	/*
+	* @brief This macro will print out a warning message used for debugging
+	*
+	* @note
+	*		This macro can only be used when the project is building in debug mode. Nothing will happen if this
+	*		macro is used in when the project is built in release mode.
+	* @param
+	*/
 	#define LOG_CORE_WARN(...)     ::Thrive::Log::GetCoreLogger()->warn(__VA_ARGS__)
+
+	/*
+	* @brief This macro will print out a error message used for debugging
+	*
+	* @note
+	*		This macro can only be used when the project is building in debug mode. Nothing will happen if this
+	*		macro is used in when the project is built in release mode.
+	* @param
+	*/
 	#define LOG_CORE_ERROR(...)    ::Thrive::Log::GetCoreLogger()->error(__VA_ARGS__)
+
+	/*
+	* @brief This macro will print out a critical message used for debugging
+	*
+	* @note
+	*		This macro can only be used when the project is building in debug mode. Nothing will happen if this
+	*		macro is used in when the project is built in release mode.
+	* @param
+	*/
 	#define LOG_CORE_CRITICAL(...) ::Thrive::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 #else

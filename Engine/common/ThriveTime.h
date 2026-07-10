@@ -1,13 +1,25 @@
+/*
+* @file ThriveTime.h
+* 
+* @brief This file will contain the time class
+*/
+
 #pragma once
 #include "Clock.h"
 
 namespace Thrive
 {
-	//Class		 : Time
-	//Description: This class will keep time. Some of the key functionality are:
-	//				- Getting the delta time
-	//				- Getting the time
-	//				- Updating time per frame
+	/*
+	*@brief This class will keep time. Some of the method are 
+	*		- Update() called once per frame 
+	*       - GetDeltaTime() seconds
+	*       - GetUnscaledDeltaTime()
+	*       - GetTime()
+	*       - SetTimeScales(float)
+	*       - GetTimeScale()
+	* 
+	* @note This class relies on the clock class 
+	*/
 	class Time
 	{
 	public: 
