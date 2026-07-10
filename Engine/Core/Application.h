@@ -28,8 +28,13 @@ namespace Thrive
 		
 		Application();
 		virtual ~Application(); 
+
 		void Run(); 
-		void Update(); 
+
+		void Update(float deltaTime); 
+		void ProcessEvents(); 
+		void Render(); 
+
 		void PushLayer(std::unique_ptr <Layer> layer); 
 		void DispatchEvent(Event& e);
 	

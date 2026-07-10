@@ -4,12 +4,13 @@ Thrive is a lightweight C ++ game engine built for learning, experimentation and
 
 This engine is developed from scratch and is intended to help learning C ++ and game engine architecture. 
 
+
 ---
 
 ## Project Updates
-## (May 9, 2026)
+## (June 25, 2026)
 
-Currently planning out how I am going to create entities, and figure out a way to connect these entities to inputs.s
+Working on adding the ENTT lib to the code. Need to add it as its own lib in the Engine\cmakelists.txt
 --- 
 
 ## Project Setup 
@@ -37,7 +38,12 @@ Maybe one day.....
 ### Requirements 
 All project requirements can be found [here](Docs/Documentation/Requirements/Requirements.md).
 
+
 ### Design Documents
+
+The link below contain the address to the google draw where the design diagram will be.
+
+Link to the google draw.[here](https://docs.google.com/drawings/d/1ENuAVW15ILRHDzzFSpWgL8HDh2p4RRgn0UNyWGTKews/edit?usp=sharing)
 
 ### 
 
@@ -54,6 +60,7 @@ All project requirements can be found [here](Docs/Documentation/Requirements/Req
 - UI: Dear ImGui version 1.91-docking 
 - Logging: Spdlog
 - Build System: CMake 
+- ENTT: ECS
 
 
 --- 
