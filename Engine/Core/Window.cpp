@@ -22,11 +22,13 @@ namespace Thrive
 		SetWindowAttributes(Common::APPLICATION_WIDTH , Common::APPLICATION_HEIGHT);
 	}
 
-	//Method		: Window::InitWindow()
-	//Parameters	: 
-	//Returns		: void
-	//Description   : This method is used to create our SFML window using our window attributes and creating a window with 
-	//					m_RenderWindow variable. 
+/**
+ * Method		: Window::InitWindow()
+ * Parameters	: 
+ * Returns		: void
+ * Description   : This method is used to create our SFML window using our window attributes and creating a window with 
+ * 				m_RenderWindow variable. 
+ */
 	void Window::InitWindow()
 	{
 		m_RenderWindow.create(
@@ -39,10 +41,12 @@ namespace Thrive
 		m_RenderWindow.setFramerateLimit(GetFrameRate()); //60fps 
 	}
 
-	//Method		: void Window::SetWindowAttributes(const unsigned int width, const unsigned int height, const std::string& name = "Thrive Engine")
-	//Parameters	: const unsigned int width, const unsigned int height, const std::string& name = "Thrive Engine"
-	//Returns		: void
-	//Description   : This method will be used to set our WindowAttributes. 
+/**
+ * Method		: void Window::SetWindowAttributes(const unsigned int width, const unsigned int height, const std::string& name = "Thrive Engine")
+ * Parameters	: const unsigned int width, const unsigned int height, const std::string& name = "Thrive Engine"
+ * Returns		: void
+ * Description   : This method will be used to set our WindowAttributes. 
+ */
 	void Window::SetWindowAttributes(const unsigned int width, const unsigned int height, const std::string& name)
 	{
 		m_WindowAttributes.height = height;
@@ -50,17 +54,21 @@ namespace Thrive
 		m_WindowAttributes.name = name;
 	} 
 
-	//Method		: void Window::PollEvents(const std::function<void(Event&)>& callback)
-	//Parameters	: const std::function<void(Event&)>& callback
-	//Returns		: void
-	//Description   : This method will be used to poll current incoming events. 
+/**
+ * Method		: void Window::PollEvents(const std::function<void(Event&)>& callback)
+ * Parameters	: const std::function<void(Event&)>& callback
+ * Returns		: void
+ * Description   : This method will be used to poll current incoming events. 
+ */
 	void Window::PollEvents(const std::function <void(Event&)>& callback)
 	{
 		while (const std::optional event = m_RenderWindow.pollEvent())
 		{
 			auto e = TranslateEvent(*event);
 
-			// Only dispatch valid events
+/**
+ * Only dispatch valid events
+ */
 			if (e)
 			{
 				callback(*e);
@@ -68,15 +76,19 @@ namespace Thrive
 		}
 	}
 
-	//Method		: std::unique_ptr<Event> Window::TranslateEvent(const sf::Event& e)
-	//Parameters	: (const sf::Event& e)
-	//Returns		: nullptr or The type of event that was just called. 
-	//Description   : This method will take an sf::Event and based off what the event is that is the event going to my event system. 
+/**
+ * Method		: std::unique_ptr<Event> Window::TranslateEvent(const sf::Event& e)
+ * Parameters	: (const sf::Event& e)
+ * Returns		: nullptr or The type of event that was just called. 
+ * Description   : This method will take an sf::Event and based off what the event is that is the event going to my event system. 
+ */
     std::unique_ptr<Event> Window::TranslateEvent(const sf::Event& e)
     {
-        // ============================
-        // INPUT SYSTEM HOOK 
-        // ============================
+/**
+ * ============================
+ * INPUT SYSTEM HOOK 
+ * ============================
+ */
         if (auto key = e.getIf<sf::Event::KeyPressed>())
         {
             Thrive::Input::SetKeyDown(

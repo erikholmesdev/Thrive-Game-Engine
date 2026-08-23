@@ -12,7 +12,9 @@
 namespace Thrive
 {
 
-	//Change this path to the file you want.
+/**
+ * Change this path to the file you want.
+ */
 	const std::string k_FilePath = "../engine/log/engine.log"; 
 
 	/*
@@ -39,12 +41,16 @@ namespace Thrive
 		{
 			if (m_CoreLogger) return;
 
-			// Console sink
+/**
+ * Console sink
+ */
 			auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 
 			if (logFileActive) // Console and file 
 			{
-				// File sink 
+/**
+ * File sink 
+ */
 				auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(k_FilePath, true);
 
 				std::vector<spdlog::sink_ptr> sinks { consoleSink, fileSink };
@@ -133,7 +139,9 @@ namespace Thrive
 	#define LOG_CORE_CRITICAL(...) ::Thrive::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 #else
-	// Compile out logging completely
+/**
+ * Compile out logging completely
+ */
 	#define LOG_CORE_TRACE(...)
 	#define LOG_CORE_INFO(...)
 	#define LOG_CORE_WARN(...)

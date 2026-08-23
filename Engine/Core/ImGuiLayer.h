@@ -8,13 +8,17 @@
 
 namespace Thrive
 {
-	//Class		 : ImGuiLayer
-	//Description: This class is a devired class from Layer. Layer can be found in the Layer.h file. 
+/**
+ * Class		 : ImGuiLayer
+ * Description: This class is a devired class from Layer. Layer can be found in the Layer.h file. 
+ */
 	class ImGuiLayer : public Layer
 	{
 		
 	public:
-		// This is used to set the m_Window to the current window. 
+/**
+ * This is used to set the m_Window to the current window. 
+ */
 		ImGuiLayer (sf::RenderWindow& window) : m_Window(window) {}
 
 		void OnAttach () override; 
@@ -22,7 +26,9 @@ namespace Thrive
 		void OnUpdate (float dt) override; 
 		void OnImGuiRender () override;
 
-		// Static methods
+/**
+ * Static methods
+ */
 	public:
 		static void Begin (sf::RenderWindow& window, sf::Clock deltaClock);
 		static void End (sf::RenderWindow& window);

@@ -8,8 +8,10 @@
 
 namespace Thrive
 {
-	//Class		 : LayerStack
-	//Description: This class will be a vector of layer unique pointers to a 
+/**
+ * Class		 : LayerStack
+ * Description: This class will be a vector of layer unique pointers to a 
+ */
 	class LayerStack {
 
 	public:
@@ -20,19 +22,27 @@ namespace Thrive
 		LayerStack() = default; 
 		~LayerStack() = default; 
 
-		//Add Layer
+/**
+ * Add Layer
+ */
 		void PushLayer (LayerPtr layer); 
 		void PushOverlay (LayerPtr overlay);
 
-		//Remove Layer
+/**
+ * Remove Layer
+ */
 		void PopLayer(); 
 		void PopOverlay();
 
-		//Iterators
+/**
+ * Iterators
+ */
 		auto begin() { return m_Layers.begin(); }
 		auto end() { return m_Layers.end(); }
 
-		//Reverse iteration (Import for Events) 
+/**
+ * Reverse iteration (Import for Events) 
+ */
 		auto rbegin() { return m_Layers.rbegin(); }
 		auto rend() { return m_Layers.rend(); }
 
