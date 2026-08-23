@@ -8,10 +8,12 @@
 
 namespace Thrive
 {
-	//Method		: void LayerStack::PushLayer (LayerPtr layer)
-	//Parameters	: (LayerPtr layer)
-	//Returns		: void
-	//Description   : This method will add a layer to our layer stack. 
+/**
+ * Method		: void LayerStack::PushLayer (LayerPtr layer)
+ * Parameters	: (LayerPtr layer)
+ * Returns		: void
+ * Description   : This method will add a layer to our layer stack. 
+ */
 	void LayerStack::PushLayer (LayerPtr layer)
 	{
 		m_Layers.insert(m_Layers.begin() + m_LayerInsertIndex, std::move(layer));
@@ -20,10 +22,12 @@ namespace Thrive
 		m_Layers[m_LayerInsertIndex - 1] -> OnAttach(); 
 	}
 
-	//Method		: void LayerStack::PushOverlay(LayerPtr overlay)
-	//Parameters	: (LayerPtr overlay)
-	//Returns		: void
-	//Description   : This method will be used to push an overlay to our layerstack
+/**
+ * Method		: void LayerStack::PushOverlay(LayerPtr overlay)
+ * Parameters	: (LayerPtr overlay)
+ * Returns		: void
+ * Description   : This method will be used to push an overlay to our layerstack
+ */
 	void LayerStack::PushOverlay (LayerPtr overlay)
 	{
 		if (!overlay)
@@ -36,10 +40,12 @@ namespace Thrive
 	}
 
 
-	//Method		: void LayerStack::PopLayer()
-	//Parameters	: 
-	//Returns		: void
-	//Description   : This method will remove the last layer added to the layer stack. 
+/**
+ * Method		: void LayerStack::PopLayer()
+ * Parameters	: 
+ * Returns		: void
+ * Description   : This method will remove the last layer added to the layer stack. 
+ */
 	void LayerStack::PopLayer()
 	{
 		if (m_LayerInsertIndex > 0)
@@ -50,10 +56,12 @@ namespace Thrive
 		}
 	}
 
-	//Method		: void LayerStack::PopOverlay()
-	//Parameters	: 
-	//Returns		: void
-	//Description   : This method will remove an overlay 
+/**
+ * Method		: void LayerStack::PopOverlay()
+ * Parameters	: 
+ * Returns		: void
+ * Description   : This method will remove an overlay 
+ */
 	void LayerStack::PopOverlay()
 	{
 		if (m_LayerInsertIndex < m_Layers.size())

@@ -12,9 +12,11 @@
 
 namespace Thrive
 {
-	//Method		: Application::Application
-	//Parameters	: ()
-	//Description   : This will setup our application by getting the window ready, and the renderer ready. If in debug mode then console logging is turned on. 
+/**
+ * Method		: Application::Application
+ * Parameters	: ()
+ * Description   : This will setup our application by getting the window ready, and the renderer ready. If in debug mode then console logging is turned on. 
+ */
 	Application::Application ()
 	{
 		m_Window.InitWindow(); 
@@ -27,29 +29,37 @@ namespace Thrive
 			std::make_unique<ImGuiLayer>(m_Window.GetWindow())
 		);
 
-		// ===============
-		// + Debug Mode  +
-		// ===============
-		// - Turns on logging
-		// - Init the DearImGui layer. 
+/**
+ * ===============
+ * + Debug Mode  +
+ * ===============
+ * - Turns on logging
+ * - Init the DearImGui layer. 
+ */
 		#ifdef THRIVE_DEBUG
 				Log::Init();	
 		#endif
 	}
 	
-	//Currently not being used
+/**
+ * Currently not being used
+ */
 	Application::~Application ()
 	{
 
 	}
 
-	//Method		: Application::Run()
-	//Parameters	: ()
-	//Returns		: void
-	//Description   : This method will run our Application 
+/**
+ * Method		: Application::Run()
+ * Parameters	: ()
+ * Returns		: void
+ * Description   : This method will run our Application 
+ */
 	void Application::Run ()
 	{
-		//Game loop
+/**
+ * Game loop
+ */
 		while (m_Window.GetWindow().isOpen())
 		{
 			Time::Update();
@@ -64,10 +74,12 @@ namespace Thrive
 		}
 	}	
 
-	//Method		: Application::ProcessEvents()
-	//Parameters	:
-	//Returns		: void
-	//Description   : This method will call the dispatch events method. 
+/**
+ * Method		: Application::ProcessEvents()
+ * Parameters	:
+ * Returns		: void
+ * Description   : This method will call the dispatch events method. 
+ */
 	void Application::ProcessEvents()
 	{
 		m_Window.PollEvents([this](Event& e)
@@ -76,10 +88,12 @@ namespace Thrive
 			});
 	}
 
-	//Method		: Application::Update(float deltaTime)
-	//Parameters	: float deltaTime
-	//Returns		: void
-	//Description   : This method will update our layer, 
+/**
+ * Method		: Application::Update(float deltaTime)
+ * Parameters	: float deltaTime
+ * Returns		: void
+ * Description   : This method will update our layer, 
+ */
 	void Application::Update(float deltaTime)
 	{
 		for (auto& layer : m_LayerStack)
@@ -88,10 +102,12 @@ namespace Thrive
 		}
 	}
 
-	//Method		: Application::Render()
-	//Parameters	:
-	//Returns		: void
-	//Description   : This method will render our engine objects. 
+/**
+ * Method		: Application::Render()
+ * Parameters	:
+ * Returns		: void
+ * Description   : This method will render our engine objects. 
+ */
 	void Application::Render()
 	{
 		Renderer::BeginFrame();
@@ -122,10 +138,12 @@ namespace Thrive
 		Renderer::EndFrame();
 	}
 	
-	//Method		: Application::PushLayer
-	//Parameters	: (std::unique_ptr<Layer> layer)
-	//Returns		: void
-	//Description   : This method will push a new layer from our game to our layer stack
+/**
+ * Method		: Application::PushLayer
+ * Parameters	: (std::unique_ptr<Layer> layer)
+ * Returns		: void
+ * Description   : This method will push a new layer from our game to our layer stack
+ */
 	void Application::PushLayer(std::unique_ptr <Layer> layer)
 	{
 		m_LayerStack.PushLayer(std::move(layer));
@@ -134,11 +152,13 @@ namespace Thrive
 
 
 
-	//Method		: Application::DispatchEvent(Event& e)
-	//Parameters	: (Event& e)
-	//Returns		: void 
-	//Description   : This methods job is to take in a current event that needs to be ran and create an 
-	//					event dispatcher for that current event. 
+/**
+ * Method		: Application::DispatchEvent(Event& e)
+ * Parameters	: (Event& e)
+ * Returns		: void 
+ * Description   : This methods job is to take in a current event that needs to be ran and create an 
+ * 				event dispatcher for that current event. 
+ */
 	void Application::DispatchEvent (Event& e)
 	{
 		EventDispatcher dispatcher(e);
@@ -156,7 +176,9 @@ namespace Thrive
 			return true;
 		});
 		
-		// Send to layers
+/**
+ * Send to layers
+ */
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
 			(*it)->OnEvent(e);

@@ -9,8 +9,10 @@
 
 namespace Thrive
 {
-	//Class		 : Layer 
-	//Description: This will be our base layer class. 
+/**
+ * Class		 : Layer 
+ * Description: This will be our base layer class. 
+ */
 	class Layer
 	{
 	public:

@@ -3,15 +3,17 @@
 #include <iostream>
 #include <cstdlib>
 
-//Function		: ReportAssertionFailure (const char*, const char*, const char*, int, const char*)
-//Parameters    : 
-//                const char* expression,
-//                const char* message,
-//	              const char* file,
-//	              int line,
-//	              const char* function
-//Returns       : void
-//Description   : This function will take in an expression, and a message and print out all the information for the user. 
+/**
+ * Function		: ReportAssertionFailure (const char*, const char*, const char*, int, const char*)
+ * Parameters    : 
+ *                const char* expression,
+ *                const char* message,
+ *               const char* file,
+ *               int line,
+ *               const char* function
+ * Returns       : void
+ * Description   : This function will take in an expression, and a message and print out all the information for the user. 
+ */
 inline void ReportAssertionFailure(
 	const char* expression,
 	const char* message,
@@ -33,17 +35,21 @@ inline void ReportAssertionFailure(
 }
 
 
-//Change this right here based off your debug constant!!!!!!
-///
-///
-/// 
+/**
+ * Change this right here based off your debug constant!!!!!!
+ * /
+ * /
+ * / 
+ */
 #ifdef THRIVE_DEBUG
 
 	//Macro				: THRIVE_ASSERT
 	//Parameter         : (expr, msg)
 	//Description		: This macro will take in an expression and a string as a message. 
 	
-	//Change this constant name here!!!!
+/**
+ * Change this constant name here!!!!
+ */
 	#define THRIVE_ASSERT(expr, msg)									  \
 	 do                                                                   \
 		{                                                                 \
